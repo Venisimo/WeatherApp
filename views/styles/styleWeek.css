@@ -1,0 +1,233 @@
+#week {
+    font-weight: bold;
+    text-decoration: underline;
+}
+@font-face {
+    font-family: Inter;
+    src: url("C:/Users/Nadip/AppData/Local/Microsoft/Windows/Fonts/Inter-Regular.otf");
+}
+ul li {
+    display: inline;
+    color: white;
+    font-size: 28px;
+    font-family: Inter;
+    }
+li a {
+    display: inline;
+    color: white;
+    font-size: 28px;
+    font-family: Inter;
+    text-decoration: none;
+}
+header {
+    margin-bottom: 4em; 
+}
+body {
+    /*background: url(images/bg.png) center center no-repeat  fixed;*/
+    /* background-image: linear-gradient(to right, #1F2A41 0%, #4830F0 51%, #1F2A41 100%);
+    background-size: cover; */
+    background: linear-gradient(to bottom right, #364F83 0%, #4830F0 50%, #0C2F78 100%);
+    background-size: cover;
+}
+.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+input {
+    margin: auto;
+    width: 1100px;
+    height: 50px;
+    border-radius: 12px;
+    font-size: 30px;
+    margin-bottom: 1em; 
+}
+.BigRectangle {
+    margin: auto;
+    width: 1133px;
+    height: 625px;
+    background-image: linear-gradient(to bottom right, #45AEE9, #46E7F1,#3aece1);
+    border-radius: 12px;
+    margin-bottom: 4em; 
+}
+#Iconloc {
+    width: 50px;
+    height: 190px;
+    background: url(images/loc.png) center no-repeat;
+}
+.city {
+    width: 972px;
+    height: 76px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 73px;
+    color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.time {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+.timeDown {
+    text-align: center;
+    font-size: 60px;
+    color: white;
+}
+#date {
+    text-decoration: underline;
+}
+#IconTempCenter {
+    width: 425px;
+    height: 234px;
+    background: url(images/sunBig.png) center no-repeat;
+}
+.IconTemp {
+    display: flex;
+    flex-direction: row;
+}
+.TempCenter {
+    color: white;
+    font-size: 60px; 
+}
+.BigRectangleTop {
+    padding-left: 30px;
+    display: flex;
+    flex-direction: row;
+}
+.BigRectangleMid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.BigRectangleDown {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+    font-size: 40px; 
+}
+.rectangles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.rectangle{
+    width: 361px;
+    height: 371px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+.rectangleBg {
+    background: url(images/rainSun.png) center no-repeat;
+    width: 361px;
+    height: 150px;
+}
+.rectangle2{
+    width: 361px;
+    height: 371px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.rectangleBg2 {
+    background: url(images/cloudSunV2.png) center no-repeat;
+    width: 361px;
+    height: 150px;
+}
+.rectangle3{
+    width: 361px;
+    height: 371px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.rectangleBg3 {
+    background: url(images/rainSunV2.png) center no-repeat;
+    width: 361px;
+    height: 150px;
+}
+.rectangle4{
+    width: 361px;
+    height: 371px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.rectangleBg4 {
+    background: url(images/rainSunV2.png) center no-repeat;
+    width: 361px;
+    height: 150px;
+}
+.rectangle5{
+    width: 361px;
+    height: 371px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.rectangleBg5 {
+    background: url(images/rainSunV2.png) center no-repeat;
+    width: 361px;
+    height: 150px;
+}
+.TemperatureDay {
+    text-align: center;
+    vertical-align: top;
+    color: white;
+    font-size: 25px; 
+}
+.TemperatureNight {
+    text-align: center;
+    vertical-align: top;
+    color: white;
+    font-size: 20px; 
+}
+.IconsWeather {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.wind {
+    background: url(images/wind.png) center no-repeat;
+    width: 47px;
+    height: 36px;
+}
+.airPressure {
+    background: url(images/airPressure.png) center no-repeat;
+    width: 50px;
+    height: 50px;
+}
+.humidity {
+    background: url(images/humidity.png) center no-repeat;
+    width: 42px;
+    height: 42px;
+}
+.WeatherText {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.slider {
+    width: 3080px;
+	height: 371px;
+	margin: auto;
+	margin-top: 25px;
+	border: 1px solid black;
+	position: relative;
+	overflow: hidden;
+}

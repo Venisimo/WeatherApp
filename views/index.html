@@ -1,0 +1,10 @@
+<table border="1">
+    {% for key, value in days %}
+        <tr>
+            <td>{{ key }}</td> 
+                {% for k, val in value %}
+                    <td>{{ k }}: {{val}}</td>
+                {% endfor %}
+        </tr>
+    {% endfor %}
+</table>

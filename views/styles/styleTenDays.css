@@ -1,0 +1,114 @@
+.city {
+    text-align: center;
+    color: white;
+    font-size: 60px;
+}
+.time {
+    font-size: 40px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+body {
+    /*background: url(images/bg.png) center center no-repeat  fixed;*/
+    background-image: linear-gradient(to right, #1F2A41 0%, #4830F0 51%, #1F2A41 100%);
+    background-size: cover;
+}
+button {
+    background: #1F2A41;
+    color: white;
+    font-size: 24px;
+    border-radius: 12px;
+    margin-left: 2%;
+    width: 150px;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    /* text-transform: uppercase; Делает текст капсом и увеличивает его размер */
+    letter-spacing: 2px;
+    background-image: linear-gradient(to right, #1F2A41 0%, #4830F0 51%, #1F2A41 100%);
+    background-size: 200% auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transition: .5s;
+}
+input {
+    background: #1F2A41;
+    color: white;
+    font-size: 24px;
+    border-radius: 12px;
+}
+.rectangle{
+    width: 80px;
+    height: 55px;
+    background-color: #1F2A41;
+    background: url(images/Week/cloud.png) center no-repeat;
+    
+}
+.rectangle2{
+    width: 80px;
+    height: 55px;
+    background-color: #1F2A41;
+    background: url(images/Week/rainV2Max.png) center no-repeat;
+    
+}
+.rectangle3{
+    width: 80px;
+    height: 55px;
+    background-color: #1F2A41;
+    background: url(images/Week/rainMin2.png) center no-repeat;
+    
+}
+.rectangle4{
+    width: 120px;
+    height: 55px;
+    background-color: #1F2A41;
+    background: url(images/Week/cloudSunV2.png) center no-repeat;
+    
+}
+.rectangle5{
+    width: 120px;
+    height: 55px;
+    background-color: #1F2A41;
+    background: url(images/Week/sun.png) center no-repeat;
+    
+}
+.rectangle6{
+    width: 120px;
+    height: 55px;
+    background-color: #1F2A41;
+    background: url(images/Week/rainSunV2.png) center no-repeat;
+    
+}
+.rectangle7{
+    width: 120px;
+    height: 55px;
+    background-color: #1F2A41;
+    background: url(images/Week/rainMid.png) center no-repeat;
+    
+}
+.rectangles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.rectangleDown {
+    width: 130px;
+    height: 90px;
+    background-color: #1F2A41;
+    text-align: center;
+    color: white;
+    font-size: 60px; 
+    border-radius: 12px;
+}
+.Temperature {
+    vertical-align: top;
+    color: white;
+    font-size: 20px; 
+}
+.wind {
+    color: white;
+    font-size: 12px;
+    text-align: left;
+    margin-top: 5px;
+}
