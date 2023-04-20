@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styleWeek.css">
+    <link rel="stylesheet" href="styles/owl.carousel.min.css">
+    <link rel="stylesheet" href="styles/owl.theme.default.min.css">
     <title>Неделя</title>
 </head>
 <header>
@@ -30,10 +32,10 @@
             <div class="BigRectangleMid">
                 <div class="IconTemp">
                     <div id="IconTempCenter"></div>
-                    <p class="TempCenter">20°C</p>
+                    <p class="TempCenter">3°C</p>
                 </div>
                 <div class="time">
-                    <p id="date">Apr 9</p>
+                    <p id="date">Apr 20</p>
                     <p>22:00</p>
                 </div>
             </div>
@@ -42,93 +44,101 @@
                 <p>Давление, мм. рт. ст.:</p>
                 <p>Влажность:</p>
             </div>
+            <div class="BigRectangleDownData">
+                <p id="BRWind">6 м/с</p>
+                <p id="BRPressure">748 мм.</p>
+                <p id="BRHumidity">70 %</p>
+            </div>
         </div>
     <div class="time">
     </div>
     <div class="rectangles">
-        <div class="slider">
-            <div class="rectangle">
-                <div class="timeDown">Apr 16</div>
-                <div class="rectangleBg"></div>
-                <div class="TemperatureDay">Днем 3°C</div>
-                <div class="TemperatureNight">Ночью -3°C</div>
-                <div class="IconsWeather">
-                    <div class="wind"></div>
-                    <div class="airPressure"></div>
-                    <div class="humidity"></div>
-                </div>       
-                <div class="WeatherText">
-                    <p>6 м/c</p>
-                    <p>748 мм.</p>
-                    <p>70 %</p>
-                </div> 
-            </div>
-            <div class="rectangle2">
-                <div class="timeDown">Apr 17</div>
-                <div class="rectangleBg2"></div>
-                <div class="TemperatureDay">Днем 3°C</div>
-                <div class="TemperatureNight">Ночью -3°C</div>
-                <div class="IconsWeather">
-                    <div class="wind"></div>
-                    <div class="airPressure"></div>
-                    <div class="humidity"></div>
+        <div class="owl-carousel owl-theme" id="slider">
+                <div class="rectangle">
+                    <div class="timeDown">Apr 20</div>
+                    <div class="rectangleBg"></div>
+                    <div class="TemperatureDay">Днем 6°C</div>
+                    <div class="TemperatureNight">Ночью -2°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>       
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div> 
                 </div>
-                <div class="WeatherText">
-                    <p>6 м/c</p>
-                    <p>748 мм.</p>
-                    <p>70 %</p>
-                </div>         
-            </div>
-            <div class="rectangle3">
-                <div class="timeDown">Apr 18</div>
-                <div class="rectangleBg3"></div>
-                <div class="TemperatureDay">Днем 3°C</div>
-                <div class="TemperatureNight">Ночью -3°C</div>
-                <div class="IconsWeather">
-                    <div class="wind"></div>
-                    <div class="airPressure"></div>
-                    <div class="humidity"></div>
+                <div class="rectangle2">
+                    <div class="timeDown">Apr 17</div>
+                    <div class="rectangleBg2"></div>
+                    <div class="TemperatureDay">Днем 3°C</div>
+                    <div class="TemperatureNight">Ночью -3°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div>         
                 </div>
-                <div class="WeatherText">
-                    <p>6 м/c</p>
-                    <p>748 мм.</p>
-                    <p>70 %</p>
-                </div>     
-            </div>
-            <div class="rectangle4">
-                <div class="timeDown">Apr 19</div>
-                <div class="rectangleBg4"></div>
-                <div class="TemperatureDay">Днем 3°C</div>
-                <div class="TemperatureNight">Ночью -3°C</div>
-                <div class="IconsWeather">
-                    <div class="wind"></div>
-                    <div class="airPressure"></div>
-                    <div class="humidity"></div>
+                <div class="rectangle3">
+                    <div class="timeDown">Apr 18</div>
+                    <div class="rectangleBg3"></div>
+                    <div class="TemperatureDay">Днем 3°C</div>
+                    <div class="TemperatureNight">Ночью -3°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div>     
                 </div>
-                <div class="WeatherText">
-                    <p>6 м/c</p>
-                    <p>748 мм.</p>
-                    <p>70 %</p>
-                </div>     
-            </div>
-            <div class="rectangle5">
-                <div class="timeDown">Apr 20</div>
-                <div class="rectangleBg5"></div>
-                <div class="TemperatureDay">Днем 3°C</div>
-                <div class="TemperatureNight">Ночью -3°C</div>
-                <div class="IconsWeather">
-                    <div class="wind"></div>
-                    <div class="airPressure"></div>
-                    <div class="humidity"></div>
+                <div class="rectangle4">
+                    <div class="timeDown">Apr 19</div>
+                    <div class="rectangleBg4"></div>
+                    <div class="TemperatureDay">Днем 3°C</div>
+                    <div class="TemperatureNight">Ночью -3°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div>     
                 </div>
-                <div class="WeatherText">
-                    <p>6 м/c</p>
-                    <p>748 мм.</p>
-                    <p>70 %</p>
+                <div class="rectangle5">
+                    <div class="timeDown">Apr 20</div>
+                    <div class="rectangleBg5"></div>
+                    <div class="TemperatureDay">Днем 3°C</div>
+                    <div class="TemperatureNight">Ночью -3°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div>
                 </div>     
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="scripts/owl.carousel.min.js"></script>
     <script src="scripts/script.js"></script>
 </body>
 </html>

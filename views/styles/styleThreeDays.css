@@ -33,7 +33,7 @@ body {
 }
 input {
     margin: auto;
-    width: 1100px;
+    width: 800px;
     height: 50px;
     border-radius: 12px;
     font-size: 30px;
@@ -41,44 +41,44 @@ input {
 }
 .BigRectangle {
     margin: auto;
-    width: 1133px;
-    height: 625px;
+    width: 900px;
+    height: 425px;
     background-image: linear-gradient(to bottom right, #45AEE9, #46E7F1,#3aece1);
     border-radius: 12px;
     margin-bottom: 4em; 
 }
 #Iconloc {
     width: 50px;
-    height: 190px;
+    height: 70px;
     background: url(images/loc.png) center no-repeat;
 }
 .city {
-    width: 972px;
-    height: 76px;
+    width: 800px;
+    height: 0px;
     font-style: normal;
-    font-weight: 400;
-    font-size: 60px;
-    line-height: 73px;
+    font-weight: 400px;
+    font-size: 40px;
+    line-height: 0px;
     color: #FFFFFF;
     font-family: Arial, Helvetica, sans-serif;
 }
 .time {
     text-align: center;
-    font-size: 40px;
+    font-size: 35px;
     color: white;
 }
 .timeDown {
     text-align: center;
-    font-size: 60px;
+    font-size: 35px;
     color: white;
 }
 #date {
     text-decoration: underline;
 }
 #IconTempCenter {
-    width: 425px;
-    height: 234px;
-    background: url(images/sunBig.png) center no-repeat;
+    width: 275px;
+    height: 189px;
+    background: url(images/sunBigV2.png) center no-repeat;
 }
 .IconTemp {
     display: flex;
@@ -86,7 +86,9 @@ input {
 }
 .TempCenter {
     color: white;
-    font-size: 60px; 
+    font-size: 60px;
+    width: 250px;
+    text-align: center; 
 }
 .BigRectangleTop {
     padding-left: 30px;
@@ -103,11 +105,36 @@ input {
     flex-direction: row;
     justify-content: space-around;
     color: white;
-    font-size: 40px; 
+    font-size: 30px; 
+    line-height: 50%;
+}
+.BigRectangleDownData {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+    font-size: 30px;
+    top: 0%;
+    line-height: 0%;
+    text-align: center;
+}
+#BRWind {
+    width: 204px;
+}
+#BRPressure {
+    width: 270px;
+}
+#BRHumidity {
+    width: 150px;
+}
+.rectangles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 .rectangle{
-    width: 421px;
-    height: 401px;
+    width: 321px;
+    height: 265px;
     background-image: linear-gradient(#3aece1, #45AEE9);
     border-radius: 12px;
     display: flex;
@@ -116,13 +143,13 @@ input {
     
 }
 .rectangleBg {
-    background: url(images/rainSun.png) center no-repeat;
-    width: 421px;
-    height: 150px;
+    background: url(images/rainSunV3.png) center no-repeat;
+    width: 321px;
+    height: 85px;
 }
 .rectangle2{
-    width: 421px;
-    height: 401px;
+    width: 321px;
+    height: 265px;
     background-image: linear-gradient(#3aece1, #45AEE9);
     border-radius: 12px;
     display: flex;
@@ -130,13 +157,13 @@ input {
     justify-content: space-around;
 }
 .rectangleBg2 {
-    background: url(images/cloudSunV2.png) center no-repeat;
-    width: 421px;
-    height: 150px;
+    background: url(images/cloudSunV3.png) center no-repeat;
+    width: 321px;
+    height: 85px;
 }
 .rectangle3{
-    width: 421px;
-    height: 401px;
+    width: 321px;
+    height: 265px;
     background-image: linear-gradient(#3aece1, #45AEE9);
     border-radius: 12px;
     display: flex;
@@ -144,14 +171,9 @@ input {
     justify-content: space-around;
 }
 .rectangleBg3 {
-    background: url(images/rainSunV2.png) center no-repeat;
-    width: 421px;
-    height: 150px;
-}
-.rectangles {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    background: url(images/rainSunV3.png) center no-repeat;
+    width: 321px;
+    height: 85px;
 }
 .TemperatureDay {
     text-align: center;
@@ -171,19 +193,19 @@ input {
     justify-content: space-around;
 }
 .wind {
-    background: url(images/wind.png) center no-repeat;
-    width: 47px;
-    height: 36px;
+    background: url(images/windV2.png) center no-repeat;
+    width: 39px;
+    height: 30px;
 }
 .airPressure {
-    background: url(images/airPressure.png) center no-repeat;
-    width: 50px;
-    height: 50px;
+    background: url(images/airPressureV3.png) center no-repeat;
+    width: 30px;
+    height: 30px;
 }
 .humidity {
-    background: url(images/humidity.png) center no-repeat;
-    width: 42px;
-    height: 42px;
+    background: url(images/humidityV2.png) center no-repeat;
+    width: 30px;
+    height: 30px;
 }
 .WeatherText {
     color: white;
