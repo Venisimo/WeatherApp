@@ -193,19 +193,19 @@ input {
     justify-content: space-around;
 }
 .wind {
-    background: url(images/windV2.png) center no-repeat;
-    width: 39px;
-    height: 30px;
+    background: url(images/wind.png) center no-repeat;
+    width: 50px;
+    height: 50px;
 }
 .airPressure {
-    background: url(images/airPressureV3.png) center no-repeat;
-    width: 30px;
-    height: 30px;
+    background: url(images/airPressure.png) center no-repeat;
+    width: 50px;
+    height: 50px;
 }
 .humidity {
-    background: url(images/humidityV2.png) center no-repeat;
-    width: 30px;
-    height: 30px;
+    background: url(images/humidity.png) center no-repeat;
+    width: 50px;
+    height: 50px;
 }
 .WeatherText {
     color: white;

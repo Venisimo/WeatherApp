@@ -45,7 +45,8 @@ input {
     height: 425px;
     background-image: linear-gradient(to bottom right, #45AEE9, #46E7F1,#3aece1);
     border-radius: 12px;
-    margin-bottom: 4em; 
+    margin-bottom: 4em;
+    box-shadow: 0 0 -5px -5px; 
 }
 #Iconloc {
     width: 50px;

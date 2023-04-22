@@ -1,114 +1,324 @@
-.city {
-    text-align: center;
+#tenDays {
+    font-weight: bold;
+    text-decoration: underline;
+}
+@font-face {
+    font-family: Inter;
+    src: url("C:/Users/Nadip/AppData/Local/Microsoft/Windows/Fonts/Inter-Regular.otf");
+}
+ul li {
+    display: inline;
     color: white;
-    font-size: 60px;
+    font-size: 28px;
+    font-family: Inter;
+    }
+li a {
+    display: inline;
+    color: white;
+    font-size: 28px;
+    font-family: Inter;
+    text-decoration: none;
+}
+header {
+    margin-bottom: 4em; 
+}
+body {
+    /*background: url(images/bg.png) center center no-repeat  fixed;*/
+    /* background-image: linear-gradient(to right, #1F2A41 0%, #4830F0 51%, #1F2A41 100%);
+    background-size: cover; */
+    background: linear-gradient(to bottom right, #364F83 0%, #4830F0 50%, #0C2F78 100%);
+    background-size: cover;
+}
+.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+input {
+    margin: auto;
+    width: 800px;
+    height: 50px;
+    border-radius: 12px;
+    font-size: 30px;
+    margin-bottom: 1em; 
+}
+.BigRectangle {
+    margin: auto;
+    width: 900px;
+    height: 425px;
+    background-image: linear-gradient(to bottom right, #45AEE9, #46E7F1,#3aece1);
+    border-radius: 12px;
+    margin-bottom: 4em; 
+}
+#Iconloc {
+    width: 50px;
+    height: 70px;
+    background: url(images/loc.png) center no-repeat;
+}
+.city {
+    width: 800px;
+    height: 0px;
+    font-style: normal;
+    font-weight: 400px;
+    font-size: 40px;
+    line-height: 0px;
+    color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .time {
-    font-size: 40px;
+    text-align: center;
+    font-size: 35px;
     color: white;
+}
+.timeDown {
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+#date {
+    text-decoration: underline;
+}
+#IconTempCenter {
+    width: 275px;
+    height: 189px;
+    background: url(images/sunBigV2.png) center no-repeat;
+}
+.IconTemp {
+    display: flex;
+    flex-direction: row;
+}
+.TempCenter {
+    color: white;
+    font-size: 60px;
+    width: 250px;
+    text-align: center; 
+}
+.BigRectangleTop {
+    padding-left: 30px;
+    display: flex;
+    flex-direction: row;
+}
+.BigRectangleMid {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
-body {
-    /*background: url(images/bg.png) center center no-repeat  fixed;*/
-    background-image: linear-gradient(to right, #1F2A41 0%, #4830F0 51%, #1F2A41 100%);
-    background-size: cover;
-}
-button {
-    background: #1F2A41;
+.BigRectangleDown {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     color: white;
-    font-size: 24px;
-    border-radius: 12px;
-    margin-left: 2%;
+    font-size: 30px; 
+    line-height: 50%;
+}
+.BigRectangleDownData {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+    font-size: 30px;
+    top: 0%;
+    line-height: 0%;
+    text-align: center;
+}
+#BRWind {
+    width: 204px;
+}
+#BRPressure {
+    width: 270px;
+}
+#BRHumidity {
     width: 150px;
-    text-decoration: none;
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    /* text-transform: uppercase; Делает текст капсом и увеличивает его размер */
-    letter-spacing: 2px;
-    background-image: linear-gradient(to right, #1F2A41 0%, #4830F0 51%, #1F2A41 100%);
-    background-size: 200% auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-  transition: .5s;
-}
-input {
-    background: #1F2A41;
-    color: white;
-    font-size: 24px;
-    border-radius: 12px;
-}
-.rectangle{
-    width: 80px;
-    height: 55px;
-    background-color: #1F2A41;
-    background: url(images/Week/cloud.png) center no-repeat;
-    
-}
-.rectangle2{
-    width: 80px;
-    height: 55px;
-    background-color: #1F2A41;
-    background: url(images/Week/rainV2Max.png) center no-repeat;
-    
-}
-.rectangle3{
-    width: 80px;
-    height: 55px;
-    background-color: #1F2A41;
-    background: url(images/Week/rainMin2.png) center no-repeat;
-    
-}
-.rectangle4{
-    width: 120px;
-    height: 55px;
-    background-color: #1F2A41;
-    background: url(images/Week/cloudSunV2.png) center no-repeat;
-    
-}
-.rectangle5{
-    width: 120px;
-    height: 55px;
-    background-color: #1F2A41;
-    background: url(images/Week/sun.png) center no-repeat;
-    
-}
-.rectangle6{
-    width: 120px;
-    height: 55px;
-    background-color: #1F2A41;
-    background: url(images/Week/rainSunV2.png) center no-repeat;
-    
-}
-.rectangle7{
-    width: 120px;
-    height: 55px;
-    background-color: #1F2A41;
-    background: url(images/Week/rainMid.png) center no-repeat;
-    
 }
 .rectangles {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-right: 80px;
+    margin-left: 80px;
 }
-.rectangleDown {
-    width: 130px;
-    height: 90px;
-    background-color: #1F2A41;
-    text-align: center;
-    color: white;
-    font-size: 60px; 
+.slider {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.rectangle{
+    width: 321px;
+    height: 265px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
     border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
 }
-.Temperature {
+.rectangleBg {
+    background: url(images/rainSunV3.png) center no-repeat;
+    width: 321px;
+    height: 150px;
+}
+.rectangle2{
+    width: 321px;
+    height: 265px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.rectangleBg2 {
+    background: url(images/cloudSunV3.png) center no-repeat;
+    width: 321px;
+    height: 150px;
+}
+.rectangle3{
+    width: 321px;
+    height: 265px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.rectangleBg3 {
+    background: url(images/rainSunV3.png) center no-repeat;
+    width: 321px;
+    height: 150px;
+}
+.rectangle4{
+    width: 321px;
+    height: 265px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.rectangleBg4 {
+    background: url(images/rainSunV3.png) center no-repeat;
+    width: 321px;
+    height: 150px;
+}
+.rectangle5{
+    width: 321px;
+    height: 265px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.rectangleBg5 {
+    background: url(images/rainSunV3.png) center no-repeat;
+    width: 321px;
+    height: 150px;
+}
+.rectangle6{
+    width: 321px;
+    height: 265px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+.rectangleBg6 {
+    background: url(images/rainSunV3.png) center no-repeat;
+    width: 321px;
+    height: 150px;
+}
+.rectangle7{
+    width: 321px;
+    height: 265px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.rectangleBg7 {
+    background: url(images/cloudSunV3.png) center no-repeat;
+    width: 321px;
+    height: 150px;
+}
+.rectangle8{
+    width: 321px;
+    height: 265px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.rectangleBg8 {
+    background: url(images/rainSunV3.png) center no-repeat;
+    width: 321px;
+    height: 150px;
+}
+.rectangle9{
+    width: 321px;
+    height: 265px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.rectangleBg9 {
+    background: url(images/rainSunV3.png) center no-repeat;
+    width: 321px;
+    height: 150px;
+}
+.rectangle10{
+    width: 321px;
+    height: 265px;
+    background-image: linear-gradient(#3aece1, #45AEE9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.rectangleBg10 {
+    background: url(images/rainSunV3.png) center no-repeat;
+    width: 321px;
+    height: 150px;
+}
+.TemperatureDay {
+    text-align: center;
+    vertical-align: top;
+    color: white;
+    font-size: 25px; 
+}
+.TemperatureNight {
+    text-align: center;
     vertical-align: top;
     color: white;
     font-size: 20px; 
 }
+.IconsWeather {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
 .wind {
+    background: url(images/wind.png) center no-repeat;
+    width: 47px;
+    height: 36px;
+}
+.airPressure {
+    background: url(images/airPressure.png) center no-repeat;
+    width: 50px;
+    height: 50px;
+}
+.humidity {
+    background: url(images/humidity.png) center no-repeat;
+    width: 42px;
+    height: 42px;
+}
+.WeatherText {
     color: white;
-    font-size: 12px;
-    text-align: left;
-    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

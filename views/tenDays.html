@@ -5,107 +5,220 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styleTenDays.css">
-    <title>Weather</title>
+    <link rel="stylesheet" href="styles/owl.carousel.min.css">
+    <link rel="stylesheet" href="styles/owl.theme.default.min.css">
+    <title>10 дней</title>
 </head>
 <header>
-    LOGO
-    <input value="введите названия н.п.">
-    <button>Сегодня</button>
-    <button>3 дня</button>
-    <button>Неделя</button>
-    <button>10 дней</button>
+    <ul>
+        <li id="today"><a href="./weatherNow.html">Сегодня</a></li>
+        <li id="threeDays"><a href="./weatherThreeDays.html">3 дня</a></li>
+        <li id="week"><a href="./week.html">Неделя</a></li>
+        <li id="tenDays"><a href="./tenDays.html">10 дней</a></li>
+    </ul>
 </header>
 <body>
-    <p class="city">
-        Населенный пункт
-    </p>
+    <div class="search">    
+        <input value="введите названия н.п.">
+    </div>
+        <div class="BigRectangle">
+            <div class="BigRectangleTop">
+                <div id="Iconloc">
+                </div>
+                <p class="city">
+                    Населенный пункт
+                </p>
+            </div>
+            <div class="BigRectangleMid">
+                <div class="IconTemp">
+                    <div id="IconTempCenter"></div>
+                    <p class="TempCenter">3°C</p>
+                </div>
+                <div class="time">
+                    <p id="date">Apr 22</p>
+                    <p>22:00</p>
+                </div>
+            </div>
+            <div class="BigRectangleDown">
+                <p>Скорость ветра:</p>
+                <p>Давление, мм. рт. ст.:</p>
+                <p>Влажность:</p>
+            </div>
+            <div class="BigRectangleDownData">
+                <p id="BRWind">6 м/с</p>
+                <p id="BRPressure">748 мм.</p>
+                <p id="BRHumidity">70 %</p>
+            </div>
+        </div>
     <div class="time">
-        <p>
-            Apr 8
-        </p>
-        <p>
-            Apr 9
-        </p>
-        <p>
-            Apr 10
-        </p>
-        <p>
-            Apr 11
-        </p>
-        <p>
-            Apr 12
-        </p>
-        <p>
-            Apr 13
-        </p>
-        <p>
-            Apr 14
-        </p>
-        <p>
-            Apr 15
-        </p>
-        <p>
-            Apr 16
-        </p>
-        <p>
-            Apr 17
-        </p>
     </div>
     <div class="rectangles">
-        <div class="rectangle">        
+        <div class="owl-carousel owl-theme" id="slider">
+                <div class="rectangle">
+                    <div class="timeDown">Apr 22</div>
+                    <div class="rectangleBg"></div>
+                    <div class="TemperatureDay">Днем 6°C</div>
+                    <div class="TemperatureNight">Ночью -2°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>       
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div> 
+                </div>
+                <div class="rectangle2">
+                    <div class="timeDown">Apr 23</div>
+                    <div class="rectangleBg2"></div>
+                    <div class="TemperatureDay">Днем 3°C</div>
+                    <div class="TemperatureNight">Ночью -3°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div>         
+                </div>
+                <div class="rectangle3">
+                    <div class="timeDown">Apr 24</div>
+                    <div class="rectangleBg3"></div>
+                    <div class="TemperatureDay">Днем 3°C</div>
+                    <div class="TemperatureNight">Ночью -3°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div>     
+                </div>
+                <div class="rectangle4">
+                    <div class="timeDown">Apr 25</div>
+                    <div class="rectangleBg4"></div>
+                    <div class="TemperatureDay">Днем 3°C</div>
+                    <div class="TemperatureNight">Ночью -3°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div>     
+                </div>
+                <div class="rectangle5">
+                    <div class="timeDown">Apr 26</div>
+                    <div class="rectangleBg5"></div>
+                    <div class="TemperatureDay">Днем 3°C</div>
+                    <div class="TemperatureNight">Ночью -3°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div>
+                </div>     
+                <div class="rectangle6">
+                    <div class="timeDown">Apr 27</div>
+                    <div class="rectangleBg"></div>
+                    <div class="TemperatureDay">Днем 6°C</div>
+                    <div class="TemperatureNight">Ночью -2°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>       
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div> 
+                </div>
+                <div class="rectangle7">
+                    <div class="timeDown">Apr 28</div>
+                    <div class="rectangleBg2"></div>
+                    <div class="TemperatureDay">Днем 3°C</div>
+                    <div class="TemperatureNight">Ночью -3°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div>         
+                </div>
+                <div class="rectangle8">
+                    <div class="timeDown">Apr 29</div>
+                    <div class="rectangleBg3"></div>
+                    <div class="TemperatureDay">Днем 3°C</div>
+                    <div class="TemperatureNight">Ночью -3°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div>     
+                </div>
+                <div class="rectangle9">
+                    <div class="timeDown">Apr 30</div>
+                    <div class="rectangleBg4"></div>
+                    <div class="TemperatureDay">Днем 3°C</div>
+                    <div class="TemperatureNight">Ночью -3°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div>     
+                </div>
+                <div class="rectangle10">
+                    <div class="timeDown">May 1</div>
+                    <div class="rectangleBg5"></div>
+                    <div class="TemperatureDay">Днем 3°C</div>
+                    <div class="TemperatureNight">Ночью -3°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p>6 м/c</p>
+                        <p>748 мм.</p>
+                        <p>70 %</p>
+                    </div>
+                </div>     
+            </div>
         </div>
-        <div class="rectangle2">        
-        </div>
-        <div class="rectangle3">        
-        </div>
-        <div class="rectangle4">        
-        </div>
-        <div class="rectangle5">        
     </div>
-    <div class="rectangles">
-        <div class="rectangleDown">
-            <div class="Temperature">-3°C</div>
-            <div class="wind">Скорость ветра: 6 м/c</div>
-            <div class="wind">Давление, мм рт. ст.: 768</div>
-            <div class="wind">Влажность: 70%</div>
-        </div>
-        <div class="rectangleDown">        
-        </div>
-        <div class="rectangleDown">        
-        </div>
-        <div class="rectangleDown">        
-        </div>
-        <div class="rectangleDown">        
-        </div>
-    </div>
-    <div>
-        <div class="rectangle6">        
-        </div>
-        <div class="rectangle7">        
-        </div>
-        <div class="rectangle8">        
-        </div>
-        <div class="rectangle9">        
-        </div>
-        <div class="rectangle10">        
-        </div>
-    </div>
-    <div class="rectangles">
-        <div class="rectangleDown">
-            <div class="Temperature">-3°C</div>
-            <div class="wind">Скорость ветра: 6 м/c</div>
-            <div class="wind">Давление, мм рт. ст.: 768</div>
-            <div class="wind">Влажность: 70%</div>
-        </div>
-        <div class="rectangleDown">        
-        </div>
-        <div class="rectangleDown">        
-        </div>
-        <div class="rectangleDown">        
-        </div>
-        <div class="rectangleDown">        
-        </div>
-    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="scripts/owl.carousel.min.js"></script>
     <script src="scripts/script.js"></script>
 </body>
 </html>
