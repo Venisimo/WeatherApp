@@ -37,16 +37,20 @@ input {
     height: 50px;
     border-radius: 12px;
     font-size: 30px;
-    margin-bottom: 1em; 
+    margin-bottom: 1em;
+    background-image: url(images/lupaV2.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: #FFFFFF;
 }
 .BigRectangle {
     margin: auto;
     width: 900px;
     height: 425px;
-    background-image: linear-gradient(to bottom right, #45AEE9, #46E7F1,#3aece1);
-    border-radius: 12px;
+    background: linear-gradient(to bottom right, #45AEE9, #46E7F1,#3aece1);
+    border-radius: 32px;
     margin-bottom: 4em;
-    box-shadow: 0 0 -5px -5px; 
+    box-shadow: -10px 5px 5px rgba(36, 33, 131, 0.8);
 }
 #Iconloc {
     width: 50px;
@@ -137,7 +141,7 @@ input {
     width: 321px;
     height: 265px;
     background-image: linear-gradient(#3aece1, #45AEE9);
-    border-radius: 12px;
+    border-radius: 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -152,7 +156,7 @@ input {
     width: 321px;
     height: 265px;
     background-image: linear-gradient(#3aece1, #45AEE9);
-    border-radius: 12px;
+    border-radius: 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -166,7 +170,7 @@ input {
     width: 321px;
     height: 265px;
     background-image: linear-gradient(#3aece1, #45AEE9);
-    border-radius: 12px;
+    border-radius: 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -180,7 +184,7 @@ input {
     width: 321px;
     height: 265px;
     background-image: linear-gradient(#3aece1, #45AEE9);
-    border-radius: 12px;
+    border-radius: 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

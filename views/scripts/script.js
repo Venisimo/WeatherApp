@@ -1,11 +1,19 @@
 let input = document.querySelector('input');
 
+const lupa = 'styles/images/lupaV2.png';
+
 input.addEventListener('focus', function() {
-    input.value = "";
-})
+    input.placeholder = "";
+    input.style.backgroundImage = "url()";
+    input.style.backgroundColor = "#FFFFFF";
+});
+
 input.addEventListener('blur', function() {
-    input.value = "введите названия н.п.";
-})
+    input.placeholder = "Введите названия локации";
+    input.style.backgroundImage = "url(" + lupa + ")";
+    input.style.backgroundColor = "#FFFFFF";
+});
+
 $(document).ready(function(){
     $("#slider").owlCarousel({
         dots: false,
