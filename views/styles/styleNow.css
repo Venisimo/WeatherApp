@@ -23,8 +23,10 @@ header {
     margin-bottom: 4em; 
 }
 body {
-    background: linear-gradient(to bottom right, #364F83 0%, #4830F0 50%, #0C2F78 100%);
+    /* background: linear-gradient(to bottom right, #364F83 0%, #4830F0 50%, #0C2F78 100%); */
     background-size: cover;
+    /* background: url(images/bg2.jpg); */
+    background: linear-gradient(#BD6F6D 0%, #5F4479 40%, #083C64 80%);
 }
 .search {
     display: flex;
@@ -41,16 +43,20 @@ input {
     background-image: url(images/lupaV2.png);
     background-repeat: no-repeat;
     background-position: right;
-    background-color: #FFFFFF;
+    background-color: #f1f1f1;
+    border: none;
 }
+::placeholder {
+    color: rgb(61, 61, 61);
+  }
 .BigRectangle {
     margin: auto;
     width: 900px;
     height: 425px;
-    background: linear-gradient(to bottom right, #45AEE9, #46E7F1,#3aece1);
+    background: linear-gradient(#46E7F1 30%,#45AEE9 100%);
     border-radius: 32px;
     margin-bottom: 4em;
-    box-shadow: -10px 5px 5px rgba(36, 33, 131, 0.8);
+    box-shadow: 5px 3px 3px #9cd7db;
 }
 #Iconloc {
     width: 50px;
