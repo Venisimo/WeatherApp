@@ -1,3 +1,6 @@
+html {
+    height: 100%
+}
 #today {
     font-weight: bold;
     text-decoration: underline;
@@ -40,7 +43,7 @@ input {
     border-radius: 12px;
     font-size: 30px;
     margin-bottom: 1em;
-    background-image: url(images/lupaV2.png);
+    background-image: url(images/iconsMeter/lupaV2.png);
     background-repeat: no-repeat;
     background-position: right;
     background-color: #f1f1f1;
@@ -61,7 +64,7 @@ input {
 #Iconloc {
     width: 50px;
     height: 70px;
-    background: url(images/loc.png) center no-repeat;
+    background: url(images/iconsMeter/loc.png) center no-repeat;
 }
 .city {
     width: 800px;
@@ -89,7 +92,7 @@ input {
 #IconTempCenter {
     width: 275px;
     height: 189px;
-    background: url(images/sunBigV2.png) center no-repeat;
+    background: url(images/BIGicon/SunBIG.png) center no-repeat;
 }
 .IconTemp {
     display: flex;
@@ -147,58 +150,58 @@ input {
     width: 321px;
     height: 265px;
     background-image: linear-gradient(#3aece1, #45AEE9);
-    border-radius: 32px;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     
 }
 .rectangleBg {
-    background: url(images/rainSunV3.png) center no-repeat;
+    background: url(images/iconsPhenomenon/cloudSunV4.png) center no-repeat;
     width: 321px;
-    height: 150px;
+    height: 170px;
 }
 .rectangle2{
     width: 321px;
     height: 265px;
     background-image: linear-gradient(#3aece1, #45AEE9);
-    border-radius: 32px;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 .rectangleBg2 {
-    background: url(images/cloudSunV3.png) center no-repeat;
+    background: url(images/iconsPhenomenon/rainMax.png) center no-repeat;
     width: 321px;
-    height: 150px;
+    height: 170px;
 }
 .rectangle3{
     width: 321px;
     height: 265px;
     background-image: linear-gradient(#3aece1, #45AEE9);
-    border-radius: 32px;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 .rectangleBg3 {
-    background: url(images/rainSunV3.png) center no-repeat;
+    background: url(images/iconsPhenomenon/rainMid.png) center no-repeat;
     width: 321px;
-    height: 150px;
+    height: 170px;
 }
 .rectangle4{
     width: 321px;
     height: 265px;
     background-image: linear-gradient(#3aece1, #45AEE9);
-    border-radius: 32px;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 .rectangleBg4 {
-    background: url(images/rainSunV3.png) center no-repeat;
+    background: url(images/iconsPhenomenon/rainMin.png) center no-repeat;
     width: 321px;
-    height: 150px;
+    height: 170px;
 }
 .Temperature {
     text-align: center;
@@ -212,17 +215,17 @@ input {
     justify-content: space-around;
 }
 .wind {
-    background: url(images/wind.png) center no-repeat;
+    background: url(images/iconsMeter/wind.png) center no-repeat;
     width: 47px;
     height: 36px;
 }
 .airPressure {
-    background: url(images/airPressure.png) center no-repeat;
+    background: url(images/iconsMeter/airPressure.png) center no-repeat;
     width: 50px;
     height: 50px;
 }
 .humidity {
-    background: url(images/humidity.png) center no-repeat;
+    background: url(images/iconsMeter/humidity.png) center no-repeat;
     width: 42px;
     height: 42px;
 }
