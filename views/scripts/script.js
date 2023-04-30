@@ -1,6 +1,6 @@
 let input = document.querySelector('input');
 
-const lupa = 'styles/images/lupaV2.png';
+const lupa = 'styles/images/iconsMeter/lupaV2.png';
 
 input.addEventListener('focus', function() {
     input.placeholder = "";

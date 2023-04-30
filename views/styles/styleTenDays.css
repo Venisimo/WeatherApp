@@ -85,7 +85,7 @@ input {
 #IconTempCenter {
     width: 275px;
     height: 189px;
-    background: url(images/BIGicon/rainMinBIG.png) center no-repeat;
+    background: url(images/BIGicon/snowMaxBIG.png) center no-repeat;
 }
 .IconTemp {
     display: flex;
@@ -284,7 +284,7 @@ input {
     justify-content: space-around;
 }
 .rectangleBg10 {
-    background: url(images/iconsPhenomenon/sunV2.png) center no-repeat;
+    background: url(images/iconsPhenomenon/snowMid.png) center no-repeat;
     width: 321px;
     height: 170px;
 }

@@ -92,7 +92,7 @@ input {
 #IconTempCenter {
     width: 275px;
     height: 189px;
-    background: url(images/BIGicon/SunBIG.png) center no-repeat;
+    background: url(images/BIGicon/snowMinBIGV3.png) center no-repeat;
 }
 .IconTemp {
     display: flex;

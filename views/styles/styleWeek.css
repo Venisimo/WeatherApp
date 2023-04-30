@@ -85,7 +85,7 @@ input {
 #IconTempCenter {
     width: 275px;
     height: 189px;
-    background: url(images/BIGicon/cloudSunBIG.png) center no-repeat;
+    background: url(images/BIGicon/snowMidBIG.png) center no-repeat;
 }
 .IconTemp {
     display: flex;
