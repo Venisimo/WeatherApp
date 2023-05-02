@@ -16,98 +16,102 @@
     </ul>
 </header>
 <body>
-    <div class="search">    
-        <input placeholder="Введите названия локации">
-    </div>
-        <div class="BigRectangle">
-            <div class="BigRectangleTop">
-                <div id="Iconloc">
+    <div class="container">
+        <div class="search">
+            <i id="IconlocV1"></i>   
+            <input placeholder="Введите названия локации">
+            <button class="lupa"></button>
+        </div>
+            <div class="BigRectangle">
+                <div class="BigRectangleTop">
+                    <i id="Iconloc">
+                    </i>
+                    <p class="city">
+                        Населенный пункт
+                    </p>
                 </div>
-                <p class="city">
-                    Населенный пункт
-                </p>
-            </div>
-            <div class="BigRectangleMid">
-                <div class="IconTemp">
-                    <div id="IconTempCenter"></div>
-                    <p class="TempCenter">20°C</p>
+                <div class="BigRectangleMid">
+                    <div class="IconTemp">
+                        <div id="IconTempCenter"></div>
+                        <p class="TempCenter">20°C</p>
+                    </div>
+                    <div class="time">
+                        <p id="date">Apr 20</p>
+                        <p id="Hour">21:47</p>
+                    </div>
                 </div>
-                <div class="time">
-                    <p id="date">Apr 20</p>
-                    <p>21:47</p>
+                <div class="BigRectangleDown">
+                    <p>Скорость ветра:</p>
+                    <p>Давление, мм. рт. ст.:</p>
+                    <p>Влажность:</p>
+                </div>
+                <div class="BigRectangleDownData">
+                    <p id="BRWind">6 м/с</p>
+                    <p id="BRPressure">748 мм.</p>
+                    <p id="BRHumidity">70 %</p>
                 </div>
             </div>
-            <div class="BigRectangleDown">
-                <p>Скорость ветра:</p>
-                <p>Давление, мм. рт. ст.:</p>
-                <p>Влажность:</p>
+        <div class="rectangles">
+            <div class="rectangle">
+                <div class="timeDown">4:00</div>
+                <div class="rectangleBg"></div>
+                <div class="Temperature">0°C</div>
+                <div class="IconsWeather">
+                    <div class="wind"></div>
+                    <div class="airPressure"></div>
+                    <div class="humidity"></div>
+                </div>       
+                <div class="WeatherText">
+                    <p>6 м/c</p>
+                    <p>748 мм.</p>
+                    <p>70 %</p>
+                </div> 
             </div>
-            <div class="BigRectangleDownData">
-                <p id="BRWind">6 м/с</p>
-                <p id="BRPressure">748 мм.</p>
-                <p id="BRHumidity">70 %</p>
+            <div class="rectangle2">
+                <div class="timeDown">8:00</div>
+                <div class="rectangleBg2"></div>
+                <div class="Temperature">-1°C</div>
+                <div class="IconsWeather">
+                    <div class="wind"></div>
+                    <div class="airPressure"></div>
+                    <div class="humidity"></div>
+                </div>
+                <div class="WeatherText">
+                    <p>6 м/c</p>
+                    <p>748 мм.</p>
+                    <p>70 %</p>
+                </div>         
             </div>
-        </div>
-    <div class="rectangles">
-        <div class="rectangle">
-            <div class="timeDown">4:00</div>
-            <div class="rectangleBg"></div>
-            <div class="Temperature">0°C</div>
-            <div class="IconsWeather">
-                <div class="wind"></div>
-                <div class="airPressure"></div>
-                <div class="humidity"></div>
-            </div>       
-            <div class="WeatherText">
-                <p>6 м/c</p>
-                <p>748 мм.</p>
-                <p>70 %</p>
-            </div> 
-        </div>
-        <div class="rectangle2">
-            <div class="timeDown">8:00</div>
-            <div class="rectangleBg2"></div>
-            <div class="Temperature">-1°C</div>
-            <div class="IconsWeather">
-                <div class="wind"></div>
-                <div class="airPressure"></div>
-                <div class="humidity"></div>
+            <div class="rectangle3">
+                <div class="timeDown">14:00</div>
+                <div class="rectangleBg3"></div>
+                <div class="Temperature">10°C</div>
+                <div class="IconsWeather">
+                    <div class="wind"></div>
+                    <div class="airPressure"></div>
+                    <div class="humidity"></div>
+                </div>
+                <div class="WeatherText">
+                    <p>6 м/c</p>
+                    <p>748 мм.</p>
+                    <p>70 %</p>
+                </div>     
             </div>
-            <div class="WeatherText">
-                <p>6 м/c</p>
-                <p>748 мм.</p>
-                <p>70 %</p>
-            </div>         
-        </div>
-        <div class="rectangle3">
-            <div class="timeDown">14:00</div>
-            <div class="rectangleBg3"></div>
-            <div class="Temperature">10°C</div>
-            <div class="IconsWeather">
-                <div class="wind"></div>
-                <div class="airPressure"></div>
-                <div class="humidity"></div>
+            <div class="rectangle4">
+                <div class="timeDown">20:00</div>
+                <div class="rectangleBg4"></div>
+                <div class="Temperature">7°C</div>
+                <div class="IconsWeather">
+                    <div class="wind"></div>
+                    <div class="airPressure"></div>
+                    <div class="humidity"></div>
+                </div>
+                <div class="WeatherText">
+                    <p>6 м/c</p>
+                    <p>748 мм.</p>
+                    <p>70 %</p>
+                </div>     
             </div>
-            <div class="WeatherText">
-                <p>6 м/c</p>
-                <p>748 мм.</p>
-                <p>70 %</p>
-            </div>     
-        </div>
-        <div class="rectangle4">
-            <div class="timeDown">20:00</div>
-            <div class="rectangleBg4"></div>
-            <div class="Temperature">7°C</div>
-            <div class="IconsWeather">
-                <div class="wind"></div>
-                <div class="airPressure"></div>
-                <div class="humidity"></div>
-            </div>
-            <div class="WeatherText">
-                <p>6 м/c</p>
-                <p>748 мм.</p>
-                <p>70 %</p>
-            </div>     
         </div>
     </div>
     <script src="scripts/script.js"></script>
