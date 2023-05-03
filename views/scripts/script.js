@@ -16,83 +16,100 @@ let api;
 
 input.addEventListener('focus', function() {
     input.placeholder = "";
-    // input.style.backgroundImage = "url()";
 });
 
 input.addEventListener('blur', function() {
     input.placeholder = "Введите названия локации";
-    // input.style.backgroundImage = "url(" + lupa + ")";
 });
 
 input.addEventListener("keyup", e => {
     if (e.key == "Enter" && input.value != "") {
-        // requestApi(inputField.value)
         cityName.innerHTML = input.value;
         container.classList.toggle('active');
     }
 });
 
 btnSearch.addEventListener("click", () => {
-    // if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    // } else {
-    //     alert("Your browser not support geolaction api");
-    // }
-    cityName.innerHTML = input.value;
-    container.classList.toggle('active');
+    let city;
+    city = input.value;
+    cityName.innerHTML = city;
+    api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=ef4201aabf980d270e131d23a5e5618b`
+
+    if (city = '') {
+        return
+    }
+
+    fetch(api).then(response => response.json()).then(
+        json => {
+            if(json.cod === '404') {
+                container.classList.toggle('active');
+                cityName.innerHTML = 'Не найден';
+                return
+            }
+            switch (json.weather[0].main) {
+                case 'Clear': 
+                    wIcon.style.background = "url(styles/images/BIGicon/SunBIG.png) center no-repeat";
+                    break;
+                case 'Rain': 
+                    wIcon.style.background = "url(styles/images/BIGicon/rainMidBIG.png) center no-repeat";
+                    break;
+                case 'Clouds': 
+                    wIcon.style.background = "url(styles/images/BIGicon/cloudBIG.png) center no-repeat"
+                    break;
+                case 'Haze': 
+                    wIcon.style.background = "url(styles/images/BIGicon/hazeBIG.png) center no-repeat";
+                    break;
+                default:
+                    wIcon.style.background = '';
+            }
+            let dt = new Date();
+            let month = "";
+            TempCenter.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
+            BRWind.innerHTML = `${parseInt(json.wind.speed)} м/с`;
+            BRPressure.innerHTML = `${parseInt(json.main.pressure)} мм.`;
+            BRHumidity.innerHTML = `${json.main.humidity}%`;
+            container.classList.toggle('active');
+            if (dt.getMonth() == 0) {
+                month = "Jan"
+            }
+            else if (dt.getMonth() == 1) {
+                month = "Feb"
+            }
+            else if (dt.getMonth() == 2) {
+                month = "Mar"
+            }
+            else if (dt.getMonth() == 3) {
+                month = "Apr"
+            }
+            else if (dt.getMonth() == 4) {
+                month = "May"
+            }
+            else if (dt.getMonth() == 5) {
+                month = "Jun"
+            }
+            else if (dt.getMonth() == 6) {
+                month = "Jul"
+            }
+            else if (dt.getMonth() == 7) {
+                month = "Aug"
+            }
+            else if (dt.getMonth() == 8) {
+                month = "Sep"
+            }
+            else if (dt.getMonth() == 9) {
+                month = "Oct"
+            }
+            else if (dt.getMonth() == 10) {
+                month = "Nov"
+            }
+            else if (dt.getMonth() == 11) {
+                month = "Dec"
+            }
+            date.innerHTML = month + " " + dt.getDate();
+            hour.innerHTML = dt.getHours() + ":" + dt.getMinutes();
+        }
+    )
 });
-
-// function requestApi(city) {
-//     // api = `curl -H 'X-Gismeteo-Token: 56b30cb255.3443075' 'https://api.gismeteo.net/v2/search/cities/?lang=en&query=${city}'`;
-//     api = `https://openweathermap.org/api/data/2.5/weather?q=${city}&units=metric&appid=ef4201aabf980d270e131d23a5e5618b`
-//     fetchData();
-// }
-
-// function onSuccess(position) {
-//     const{latitude, longitude} = position.coords;
-//     // api = `curl -H 'X-Gismeteo-Token: 56b30cb255.3443075' 'https://api.gismeteo.net/v2/search/cities/?latitude=${latitude}&longitude=${longitude}'`
-//     api = `https://openweathermap.org/api/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=ef4201aabf980d270e131d23a5e5618b`
-//     fetchData();
-// }
-
-// function onError(error) {
-//     infoTxt.innerText = error.message;
-//     infoTxt.classList.add("error");
-// }
-
-// function fetchData() {
-//     infoTxt.innerText = "Geting weather detalics...";
-//     infoTxt.classList.add("pending");
-//     fetch(api).then(res => res.json()).then(result => weatherDatalis(result));
-//         infoTxt.innerText = "somting went wrong";
-//         infoTxt.classList.replace("pending", "error");
-// }
-
-// function weatherDatalis(info) {
-//     if(info.cod == "404") {
-//         infoTxt.classList.replace("pending", "error");
-//         infoTxt.innerText = `${inputField.value} isn't a valid city name`;
-//     } else {
-//         const city = info.name;
-//         const country = info.country = info.sys.country;
-//         const {description, id} = info.weather[0];
-//         const {temp, feels_like, humidity} = info.main;
-        
-//         if (id == 800) {
-//             wIcon.style.background = "url(styles/images/BIGicon/SunBIG.png)";
-//         } else if (id >= 200 && id <= 232) {
-//             wIcon.style.background = "url(styles/images/BIGicon/rainMaxBIG.png)"
-//         } else if (id >= 600 && ud <= 781) {
-//             wIcon.style.background = "url(styles/images/BIGicon/snowMidBIG.png)"
-//         } else if (id >= 701 && id <= 781){
-//             wIcon.style.background = "url(styles/images/BIGicon/snowMaxBIG.png)" //туман
-//         } else if (id >= 801 && id <= 804){
-//             wIcon.style.background = "url(styles/images/BIGicon/cloudBIG.png)"
-//         } else if ((id >= 500 && id <= 531) || (id >= 300 && id <= 321)){
-//             wIcon.style.background = "url(styles/images/BIGicon/rainBIG.png)";
-//         }
-//     }
-// }
 
 $(document).ready(function(){
     $("#slider").owlCarousel({
