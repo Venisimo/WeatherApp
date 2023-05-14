@@ -8,6 +8,18 @@ app.get('/weatherNow', function(req, res){
     res.sendFile(__dirname + '/views/weatherNow.html');
 });
 
+app.get('/weatherThreeDays', function(req, res){
+    res.sendFile(__dirname + '/views/weatherThreeDays.html');
+});
+
+app.get('/week', function(req, res){
+    res.sendFile(__dirname + '/views/week.html');
+});
+
+app.get('/tenDays', function(req, res){
+    res.sendFile(__dirname + '/views/tenDays.html');
+});
+
 app.use(express.static(path.join(__dirname, '/views/')))
     
 
