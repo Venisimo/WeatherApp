@@ -216,119 +216,257 @@ function geocode() {
                                 wIcon.style.background = "url(styles/images/BIGicon/cloudSunBIG.png) center no-repeat";
                             } else if (json.hourly.weathercode[hourNow] == 3) {
                                 wIcon.style.background = "url(styles/images/BIGicon/cloudBIG.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hourNow] == 61) {
-                                wIcon.style.background = "url(styles/images/BIGicon/rainMinBIG.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hourNow] == 63) {
-                                wIcon.style.background = "url(styles/images/BIGicon/rainMidBIG.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hourNow] == 65) {
-                                wIcon.style.background = "url(styles/images/BIGicon/rainMaxBIG.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hourNow] == 65) {
-                                wIcon.style.background = "url(styles/images/BIGicon/snowMinBIGV3.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hourNow] == 71) {
-                                wIcon.style.background = "url(styles/images/BIGicon/snowMidBIG.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hourNow] == 73) {
-                                wIcon.style.background = "url(styles/images/BIGicon/snowMaxBIG.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hourNow] == 75) {
-                                wIcon.style.background = "url(styles/images/BIGicon/rainMaxBIG.png) center no-repeat";
                             } else if (json.hourly.weathercode[hourNow] == 45) {
                                 wIcon.style.background = "url(styles/images/BIGicon/hazeBIG.png) center no-repeat";
-                            }
+                            } else if (json.hourly.weathercode[hourNow] == 48) {
+                                wIcon.style.background = "url(styles/images/BIGicon/FreezehazeBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 51) {
+                                wIcon.style.background = "url(styles/images/BIGicon/drizzleMinBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 53) {
+                                wIcon.style.background = "url(styles/images/BIGicon/drizzleMidBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 55) {
+                                wIcon.style.background = "url(styles/images/BIGicon/drizzleMaxBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 56) {
+                                wIcon.style.background = "url(styles/images/BIGicon/FreezeDrizzleMinBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 57) {
+                                wIcon.style.background = "url(styles/images/BIGicon/FreezeDrizzleMaxBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 61) {
+                                wIcon.style.background = "url(styles/images/BIGicon/rainMinSunBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 63) {
+                                wIcon.style.background = "url(styles/images/BIGicon/rainMidSunBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 65) {
+                                wIcon.style.background = "url(styles/images/BIGicon/rainMaxSunBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 66) {
+                                wIcon.style.background = "url(styles/images/BIGicon/rainSnowMinBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 67) {
+                                wIcon.style.background = "url(styles/images/BIGicon/rainSnowMaxBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 71) {
+                                wIcon.style.background = "url(styles/images/BIGicon/snowMinSunBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 73) {
+                                wIcon.style.background = "url(styles/images/BIGicon/snowMidSunBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 75) {
+                                wIcon.style.background = "url(styles/images/BIGicon/snowMaxSunBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 77) {
+                                wIcon.style.background = "url(styles/images/BIGicon/SnowGrainsBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 80) {
+                                wIcon.style.background = "url(styles/images/BIGicon/rainMinBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 81) {
+                                wIcon.style.background = "url(styles/images/BIGicon/rainMidBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 82) {
+                                wIcon.style.background = "url(styles/images/BIGicon/rainMaxBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 85) {
+                                wIcon.style.background = "url(styles/images/BIGicon/snowMidBIG.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hourNow] == 86) {
+                                wIcon.style.background = "url(styles/images/BIGicon/snowMaxBIG.png) center no-repeat";
+                            } 
+
 
                             if (json.hourly.weathercode[hoursOne] == 0) {
                                 IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/Sun.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursOne] == 1 || json.hourly.weathercode[hoursOne] == 2) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/cloudSunV4.png) center no-repeat";
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/cloudSun.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursOne] == 3) {
                                 IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/cloud.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursOne] == 61) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMin.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursOne] == 63) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMid.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursOne] == 65) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMax.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursOne] == 65) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMinV3.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursOne] == 71) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMid.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursOne] == 73) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursOne] == 75) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMax.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursOne] == 45) {
                                 IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/haze.png) center no-repeat";
-                            }
+                            } else if (json.hourly.weathercode[hoursOne] == 48) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/Freezehaze.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 51) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/drizzleMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 53) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/drizzleMid.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 55) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/drizzleMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 56) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/FreezeDrizzleMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 57) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/FreezeDrizzleMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 61) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 63) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 65) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 66) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainSnowMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 67) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainSnowMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 71) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 73) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 75) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 77) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/SnowGrains.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 80) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 81) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMid.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 82) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 85) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMid.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursOne] == 86) {
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
+                            } 
+
 
                             if (json.hourly.weathercode[hoursTwo] == 0) {
                                 IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/Sun.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursTwo] == 1 || json.hourly.weathercode[hoursTwo] == 2) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/cloudSunV4.png) center no-repeat";
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/cloudSun.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursTwo] == 3) {
                                 IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/cloud.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursTwo] == 61) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMin.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursTwo] == 63) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMid.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursTwo] == 65) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMax.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursTwo] == 65) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMinV3.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursTwo] == 71) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMid.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursTwo] == 73) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursTwo] == 75) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMax.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursTwo] == 45) {
                                 IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/haze.png) center no-repeat";
-                            }
+                            } else if (json.hourly.weathercode[hoursTwo] == 48) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/Freezehaze.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 51) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/drizzleMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 53) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/drizzleMid.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 55) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/drizzleMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 56) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/FreezeDrizzleMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 57) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/FreezeDrizzleMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 61) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 63) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 65) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 66) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainSnowMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 67) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainSnowMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 71) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 73) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 75) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 77) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/SnowGrains.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 80) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 81) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMid.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 82) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 85) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMid.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursTwo] == 86) {
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
+                            } 
+
 
                             if (json.hourly.weathercode[hoursThree] == 0) {
                                 IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/Sun.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursThree] == 1 || json.hourly.weathercode[hoursThree] == 2) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/cloudSunV4.png) center no-repeat";
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/cloudSun.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursThree] == 3) {
                                 IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/cloud.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursThree] == 61) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMin.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursThree] == 63) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMid.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursThree] == 65) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMax.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursThree] == 65) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMinV3.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursThree] == 71) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMid.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursThree] == 73) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursThree] == 75) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMax.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursThree] == 45) {
                                 IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/haze.png) center no-repeat";
-                            }
+                            } else if (json.hourly.weathercode[hoursThree] == 48) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/Freezehaze.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 51) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/drizzleMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 53) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/drizzleMid.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 55) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/drizzleMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 56) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/FreezeDrizzleMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 57) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/FreezeDrizzleMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 61) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 63) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 65) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 66) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainSnowMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 67) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainSnowMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 71) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 73) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 75) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 77) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/SnowGrains.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 80) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 81) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMid.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 82) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 85) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMid.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursThree] == 86) {
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
+                            } 
+
 
                             if (json.hourly.weathercode[hoursFour] == 0) {
                                 IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/Sun.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursFour] == 1 || json.hourly.weathercode[hoursFour] == 2) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/cloudSunV4.png) center no-repeat";
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/cloudSun.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursFour] == 3) {
                                 IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/cloud.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursFour] == 61) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMin.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursFour] == 63) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMid.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursFour] == 65) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMax.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursFour] == 65) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMinV3.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursFour] == 71) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMid.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursFour] == 73) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
-                            } else if (json.hourly.weathercode[hoursFour] == 75) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMax.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursFour] == 45) {
                                 IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/haze.png) center no-repeat";
-                            }
+                            } else if (json.hourly.weathercode[hoursFour] == 48) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/Freezehaze.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 51) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/drizzleMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 53) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/drizzleMid.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 55) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/drizzleMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 56) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/FreezeDrizzleMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 57) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/FreezeDrizzleMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 61) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 63) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 65) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 66) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainSnowMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 67) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainSnowMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 71) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 73) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 75) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 77) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/SnowGrains.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 80) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMin.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 81) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMid.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 82) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMax.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 85) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMid.png) center no-repeat";
+                            } else if (json.hourly.weathercode[hoursFour] == 86) {
+                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
+                            } 
+
+
+
+                            
 
                             if (hoursOne >= 24) {
                                 hoursOne -= 24;
