@@ -6,30 +6,45 @@ html {
     text-decoration: underline;
 }
 @font-face {
-    font-family: Inter;
-    src: url("C:/Users/Nadip/AppData/Local/Microsoft/Windows/Fonts/Inter-Regular.otf");
+    font-family: NotoSans;
+    src: url("Fonts/NotoSansHK-Regular.otf");
 }
 ul li {
     display: inline;
     color: white;
     font-size: 28px;
-    font-family: Inter;
+    font-family: NotoSans;
     }
 li a {
     display: inline;
     color: white;
     font-size: 28px;
-    font-family: Inter;
+    font-family: NotoSans;
     text-decoration: none;
 }
+.left {
+    margin-right: 400px;
+}
 header {
-    margin-bottom: 4em; 
+    /* margin-bottom: 1em; */
+    display: flex;
+}
+header ul {
+    text-align: center; 
+}
+header p {
+    display: inline;
+    color: white;
+    font-size: 28px;
+    font-family: NotoSans;
+    text-decoration: none;
 }
 body {
     /* background: linear-gradient(to bottom right, #364F83 0%, #4830F0 50%, #0C2F78 100%); */
     background-size: cover;
     /* background: url(images/bg2.jpg); */
     background: linear-gradient(#BD6F6D 0%, #5F4479 40%, #083C64 80%);
+    font-family: NotoSans;
 }
 .container {
     position: relative;
@@ -126,7 +141,7 @@ input {
     text-decoration: underline;
 }
 #IconTempCenter {
-    width: 275px;
+    width: 300px;
     height: 189px;
     background: url(images/BIGicon/snowMinBIGV3.png) center no-repeat;
 }
@@ -195,7 +210,7 @@ input {
 .rectangleBg {
     background: url(images/iconsPhenomenon/cloudSunV4.png) center no-repeat;
     width: 321px;
-    height: 170px;
+    height: 200px;
 }
 .rectangle2{
     width: 321px;
@@ -209,7 +224,7 @@ input {
 .rectangleBg2 {
     background: url(images/iconsPhenomenon/rainMax.png) center no-repeat;
     width: 321px;
-    height: 170px;
+    height: 200px;
 }
 .rectangle3{
     width: 321px;
@@ -223,7 +238,7 @@ input {
 .rectangleBg3 {
     background: url(images/iconsPhenomenon/rainMid.png) center no-repeat;
     width: 321px;
-    height: 170px;
+    height: 200px;
 }
 .rectangle4{
     width: 321px;
@@ -243,7 +258,7 @@ input {
     text-align: center;
     vertical-align: top;
     color: white;
-    font-size: 40px; 
+    font-size: 25px; 
 }
 .IconsWeather {
     display: flex;

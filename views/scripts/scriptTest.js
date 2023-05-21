@@ -85,7 +85,7 @@ function geocode() {
                 console.log(lon);
 
                 function forecast() {
-                    apiWeather = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,weathercode,surface_pressure,windspeed_10m&current_weather=true&windspeed_unit=ms&forecast_days=2&timezone=auto`
+                    apiWeather = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,weathercode,surface_pressure,windspeed_10m&daily=sunrise,sunset&current_weather=true&windspeed_unit=ms&forecast_days=2&timezone=auto`
                 
                     if (city = '') {
                         return
@@ -100,6 +100,8 @@ function geocode() {
                             let minutesNow = dat.getUTCMinutes();
                             container.classList.add('active');
                             console.log(json);
+
+
                             if (dat.getMonth() == 0) {
                                 month = "Jan"
                             }
@@ -136,6 +138,8 @@ function geocode() {
                             else if (dat.getMonth() == 11) {
                                 month = "Dec"
                             }
+
+
                             if (json.utc_offset_seconds % 3600 != 0 || json.utc_offset_seconds % -3600 != 0) {
                                if (json.utc_offset_seconds % 3600 == 1800 || json.utc_offset_seconds % 3600 == -1800) {
                                     if (json.utc_offset_seconds > 0) {
@@ -174,6 +178,25 @@ function geocode() {
                                     dayNow -= 1;
                                 }            
                             }
+                            
+                            let DateLocale = new Date(dat.getUTCFullYear(), dat.getMonth(), dayNow, hourNow, minutesNow);
+                            
+                            console.log(json.daily.sunrise);
+                            let sunrise = new Date(json.daily.sunrise[0]);
+                            let sunset = new Date(json.daily.sunset[0]);
+                            console.log(DateLocale);
+                            console.log(sunrise); 
+                            console.log(sunset);
+                        
+                            if (DateLocale > sunrise && DateLocale < sunset) {
+                                console.log('день');
+                            } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                console.log('день');
+                            } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                console.log('ночь');
+                            } else {
+                                console.log('ночь');
+                            }
 
                             TempCenter.innerHTML = `${parseInt(json.current_weather.temperature)}°C`;
                             BRWind.innerHTML = `${parseInt(json.current_weather.windspeed)} м/с`;
@@ -211,9 +234,25 @@ function geocode() {
                             console.log(json.hourly.weathercode[hourNow]);
                             
                             if (json.hourly.weathercode[hourNow] == 0) {
-                                wIcon.style.background = "url(styles/images/BIGicon/SunBIG.png) center no-repeat";
+                                if (DateLocale > sunrise && DateLocale < sunset) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/SunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else {
+                                    wIcon.style.background = "url(styles/images/BIGicon/MoonBIG.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hourNow] == 1 || json.hourly.weathercode[hourNow] == 2) {
-                                wIcon.style.background = "url(styles/images/BIGicon/cloudSunBIG.png) center no-repeat";
+                                if (DateLocale > sunrise && DateLocale < sunset) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/cloudSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                } else {
+                                    wIcon.style.background = "url(styles/images/BIGicon/cloudMoonBIG.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hourNow] == 3) {
                                 wIcon.style.background = "url(styles/images/BIGicon/cloudBIG.png) center no-repeat";
                             } else if (json.hourly.weathercode[hourNow] == 45) {
@@ -231,21 +270,93 @@ function geocode() {
                             } else if (json.hourly.weathercode[hourNow] == 57) {
                                 wIcon.style.background = "url(styles/images/BIGicon/FreezeDrizzleMaxBIG.png) center no-repeat";
                             } else if (json.hourly.weathercode[hourNow] == 61) {
-                                wIcon.style.background = "url(styles/images/BIGicon/rainMinSunBIG.png) center no-repeat";
+                                if (DateLocale > sunrise && DateLocale < sunset) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/rainMinSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/rainMinSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    wIcon.style.background = "url(styles/images/BIGicon/rainMinMoonBIG.png) center no-repeat";
+                                } else {
+                                    wIcon.style.background = "url(styles/images/BIGicon/rainMinMoonBIG.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hourNow] == 63) {
-                                wIcon.style.background = "url(styles/images/BIGicon/rainMidSunBIG.png) center no-repeat";
+                                if (DateLocale > sunrise && DateLocale < sunset) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/rainMidSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/rainMidSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    wIcon.style.background = "url(styles/images/BIGicon/rainMidMoonBIG.png) center no-repeat";
+                                } else {
+                                    wIcon.style.background = "url(styles/images/BIGicon/rainMidMoonBIG.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hourNow] == 65) {
-                                wIcon.style.background = "url(styles/images/BIGicon/rainMaxSunBIG.png) center no-repeat";
+                                if (DateLocale > sunrise && DateLocale < sunset) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/rainMaxSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/rainMaxSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    wIcon.style.background = "url(styles/images/BIGicon/rainMaxMoonBIG.png) center no-repeat";
+                                } else {
+                                    wIcon.style.background = "url(styles/images/BIGicon/rainMaxMoonBIG.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hourNow] == 66) {
                                 wIcon.style.background = "url(styles/images/BIGicon/rainSnowMinBIG.png) center no-repeat";
                             } else if (json.hourly.weathercode[hourNow] == 67) {
                                 wIcon.style.background = "url(styles/images/BIGicon/rainSnowMaxBIG.png) center no-repeat";
                             } else if (json.hourly.weathercode[hourNow] == 71) {
-                                wIcon.style.background = "url(styles/images/BIGicon/snowMinSunBIG.png) center no-repeat";
+                                if (DateLocale > sunrise && DateLocale < sunset) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/snowMinSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/snowMinSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    wIcon.style.background = "url(styles/images/BIGicon/snowMinMoonBIG.png) center no-repeat";
+                                } else {
+                                    wIcon.style.background = "url(styles/images/BIGicon/snowMinMoonBIG.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hourNow] == 73) {
-                                wIcon.style.background = "url(styles/images/BIGicon/snowMidSunBIG.png) center no-repeat";
+                                if (DateLocale > sunrise && DateLocale < sunset) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/snowMidSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/snowMidSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    wIcon.style.background = "url(styles/images/BIGicon/snowMidMoonBIG.png) center no-repeat";
+                                } else {
+                                    wIcon.style.background = "url(styles/images/BIGicon/snowMidMoonBIG.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hourNow] == 75) {
-                                wIcon.style.background = "url(styles/images/BIGicon/snowMaxSunBIG.png) center no-repeat";
+                                if (DateLocale > sunrise && DateLocale < sunset) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/snowMaxSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    wIcon.style.background = "url(styles/images/BIGicon/snowMaxSunBIG.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    wIcon.style.background = "url(styles/images/BIGicon/snowMaxMoonBIG.png) center no-repeat";
+                                } else {
+                                    wIcon.style.background = "url(styles/images/BIGicon/snowMaxMoonBIG.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hourNow] == 77) {
                                 wIcon.style.background = "url(styles/images/BIGicon/SnowGrainsBIG.png) center no-repeat";
                             } else if (json.hourly.weathercode[hourNow] == 80) {
@@ -261,10 +372,93 @@ function geocode() {
                             } 
 
 
+                            let dayLocaleTomorrowOne = dayNow;
+                            let dayLocaleTomorrowTwo = dayNow;
+                            let dayLocaleTomorrowThree = dayNow;
+                            let dayLocaleTomorrowFour = dayNow;
+
+                            let hoursOneNotStatic = hoursOne;
+                            let hoursTwoNotStatic = hoursTwo;
+                            let hoursThreeNotStatic = hoursThree;
+                            let hoursFourNotStatic = hoursFour;
+                            
+                            let sunriseOne = new Date(json.daily.sunrise[0]);
+                            let sunsetOne = new Date(json.daily.sunset[0]);
+                            let sunriseTwo = new Date(json.daily.sunrise[0]);
+                            let sunsetTwo = new Date(json.daily.sunset[0]);
+                            let sunriseThree = new Date(json.daily.sunrise[0]);
+                            let sunsetThree = new Date(json.daily.sunset[0]);
+                            let sunriseFour = new Date(json.daily.sunrise[0]);
+                            let sunsetFour = new Date(json.daily.sunset[0]);
+
+
+                            console.log(hoursOne);
+                            if (hoursOne >= 24) {
+                                hoursOneNotStatic -= 24;
+                                dayLocaleTomorrowOne += 1
+                                sunriseOne = new Date(json.daily.sunrise[1]);
+                                sunsetOne = new Date(json.daily.sunset[1]);
+                            }
+                            if (hoursTwo >= 24) {
+                                hoursTwoNotStatic -= 24;
+                                dayLocaleTomorrowTwo += 1
+                                sunriseTwo = new Date(json.daily.sunrise[1]);
+                                sunsetTwo = new Date(json.daily.sunset[1]);
+                            }
+                            if (hoursThree >= 24) {
+                                hoursThreeNotStatic -= 24;
+                                dayLocaleTomorrowThree += 1
+                                sunriseThree = new Date(json.daily.sunrise[1]);
+                                sunsetThree = new Date(json.daily.sunset[1]);
+                            }
+                            if (hoursFour >= 24) {
+                                hoursFourNotStatic -= 24;
+                                dayLocaleTomorrowFour += 1
+                                sunriseFour = new Date(json.daily.sunrise[1]);
+                                sunsetFour = new Date(json.daily.sunset[1]);
+                            }
+
+
+                            let DateLocaleTomorrowOne = new Date(dat.getUTCFullYear(), dat.getMonth(), dayLocaleTomorrowOne, hoursOneNotStatic);
+                            let DateLocaleTomorrowTwo = new Date(dat.getUTCFullYear(), dat.getMonth(), dayLocaleTomorrowTwo, hoursTwoNotStatic);
+                            let DateLocaleTomorrowThree = new Date(dat.getUTCFullYear(), dat.getMonth(), dayLocaleTomorrowThree, hoursThreeNotStatic);
+                            let DateLocaleTomorrowFour = new Date(dat.getUTCFullYear(), dat.getMonth(), dayLocaleTomorrowFour, hoursFourNotStatic);
+                            
+                            console.log(DateLocaleTomorrowOne);
+                            console.log(DateLocaleTomorrowTwo);
+                            console.log(DateLocaleTomorrowThree);
+                            console.log(DateLocaleTomorrowFour);
+                            
+                            console.log(sunriseOne); 
+                            console.log(sunsetOne);
+                            console.log(sunriseTwo); 
+                            console.log(sunsetTwo);
+                            console.log(sunriseThree); 
+                            console.log(sunsetThree);
+                            console.log(sunriseFour); 
+                            console.log(sunsetFour);
+                            
+
                             if (json.hourly.weathercode[hoursOne] == 0) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/Sun.png) center no-repeat";
+                                if (DateLocaleTomorrowOne > sunriseOne && DateLocaleTomorrowOne < sunsetOne) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/Sun.png) center no-repeat";
+                                    console.log('день');
+                                } else {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/Moon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursOne] == 1 || json.hourly.weathercode[hoursOne] == 2) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/cloudSun.png) center no-repeat";
+                                if (DateLocaleTomorrowOne > sunriseOne && DateLocaleTomorrowOne < sunsetOne) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/cloudSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                } else {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/cloudMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursOne] == 3) {
                                 IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/cloud.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursOne] == 45) {
@@ -282,21 +476,93 @@ function geocode() {
                             } else if (json.hourly.weathercode[hoursOne] == 57) {
                                 IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/FreezeDrizzleMax.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursOne] == 61) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                                if (DateLocaleTomorrowOne > sunriseOne && DateLocaleTomorrowOne < sunsetOne) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMinMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMinMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursOne] == 63) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                                if (DateLocaleTomorrowOne > sunriseOne && DateLocaleTomorrowOne < sunsetOne) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMidMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMidMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursOne] == 65) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                                if (DateLocaleTomorrowOne > sunriseOne && DateLocaleTomorrowOne < sunsetOne) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMaxMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainMaxMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursOne] == 66) {
                                 IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainSnowMin.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursOne] == 67) {
                                 IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/rainSnowMax.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursOne] == 71) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                                if (DateLocaleTomorrowOne > sunriseOne && DateLocaleTomorrowOne < sunsetOne) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMinMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMinMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursOne] == 73) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                                if (DateLocaleTomorrowOne > sunriseOne && DateLocaleTomorrowOne < sunsetOne) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMidMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMidMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursOne] == 75) {
-                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                                if (DateLocaleTomorrowOne > sunriseOne && DateLocaleTomorrowOne < sunsetOne) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseOne == 'Invalid Date' && sunsetOne == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMaxMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMaxMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursOne] == 77) {
                                 IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/SnowGrains.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursOne] == 80) {
@@ -309,13 +575,29 @@ function geocode() {
                                 IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMid.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursOne] == 86) {
                                 IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
-                            } 
-
-
+                            }
+                            
+                            
                             if (json.hourly.weathercode[hoursTwo] == 0) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/Sun.png) center no-repeat";
+                                if (DateLocaleTomorrowTwo > sunriseTwo && DateLocaleTomorrowTwo < sunsetTwo) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/Sun.png) center no-repeat";
+                                    console.log('день');
+                                } else {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/Moon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursTwo] == 1 || json.hourly.weathercode[hoursTwo] == 2) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/cloudSun.png) center no-repeat";
+                                if (DateLocaleTomorrowTwo > sunriseTwo && DateLocaleTomorrowTwo < sunsetTwo) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/cloudSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                } else {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/cloudMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursTwo] == 3) {
                                 IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/cloud.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursTwo] == 45) {
@@ -333,21 +615,93 @@ function geocode() {
                             } else if (json.hourly.weathercode[hoursTwo] == 57) {
                                 IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/FreezeDrizzleMax.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursTwo] == 61) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                                if (DateLocaleTomorrowTwo > sunriseTwo && DateLocaleTomorrowTwo < sunsetTwo) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMinMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMinMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursTwo] == 63) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                                if (DateLocaleTomorrowTwo > sunriseTwo && DateLocaleTomorrowTwo < sunsetTwo) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMidMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMidMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursTwo] == 65) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                                if (DateLocaleTomorrowTwo > sunriseTwo && DateLocaleTomorrowTwo < sunsetTwo) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMaxMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainMaxMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursTwo] == 66) {
                                 IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainSnowMin.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursTwo] == 67) {
                                 IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/rainSnowMax.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursTwo] == 71) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                                if (DateLocaleTomorrowTwo > sunriseTwo && DateLocaleTomorrowTwo < sunsetTwo) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMinMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMinMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursTwo] == 73) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                                if (DateLocaleTomorrowTwo > sunriseTwo && DateLocaleTomorrowTwo < sunsetTwo) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMidMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMidMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursTwo] == 75) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                                if (DateLocaleTomorrowTwo > sunriseTwo && DateLocaleTomorrowTwo < sunsetTwo) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseTwo == 'Invalid Date' && sunsetTwo == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMaxMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMaxMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursTwo] == 77) {
                                 IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/SnowGrains.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursTwo] == 80) {
@@ -360,13 +714,29 @@ function geocode() {
                                 IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMid.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursTwo] == 86) {
                                 IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
-                            } 
-
-
+                            }
+                            
+                            
                             if (json.hourly.weathercode[hoursThree] == 0) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/Sun.png) center no-repeat";
+                                if (DateLocaleTomorrowThree > sunriseThree && DateLocaleTomorrowThree < sunsetThree) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/Sun.png) center no-repeat";
+                                    console.log('день');
+                                } else {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/Moon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursThree] == 1 || json.hourly.weathercode[hoursThree] == 2) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/cloudSun.png) center no-repeat";
+                                if (DateLocaleTomorrowThree > sunriseThree && DateLocaleTomorrowThree < sunsetThree) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/cloudSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                } else {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/cloudMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursThree] == 3) {
                                 IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/cloud.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursThree] == 45) {
@@ -384,21 +754,93 @@ function geocode() {
                             } else if (json.hourly.weathercode[hoursThree] == 57) {
                                 IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/FreezeDrizzleMax.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursThree] == 61) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                                if (DateLocaleTomorrowThree > sunriseThree && DateLocaleTomorrowThree < sunsetThree) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMinMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMinMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursThree] == 63) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                                if (DateLocaleTomorrowThree > sunriseThree && DateLocaleTomorrowThree < sunsetThree) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMidMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMidMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursThree] == 65) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                                if (DateLocaleTomorrowThree > sunriseThree && DateLocaleTomorrowThree < sunsetThree) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMaxMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainMaxMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursThree] == 66) {
                                 IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainSnowMin.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursThree] == 67) {
                                 IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/rainSnowMax.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursThree] == 71) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                                if (DateLocaleTomorrowThree > sunriseThree && DateLocaleTomorrowThree < sunsetThree) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMinMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMinMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursThree] == 73) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                                if (DateLocaleTomorrowThree > sunriseThree && DateLocaleTomorrowThree < sunsetThree) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMidMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMidMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursThree] == 75) {
-                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                                if (DateLocaleTomorrowThree > sunriseThree && DateLocaleTomorrowThree < sunsetThree) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseThree == 'Invalid Date' && sunsetThree == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMaxMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMaxMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursThree] == 77) {
                                 IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/SnowGrains.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursThree] == 80) {
@@ -411,13 +853,29 @@ function geocode() {
                                 IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMid.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursThree] == 86) {
                                 IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
-                            } 
-
-
+                            }
+                            
+                            
                             if (json.hourly.weathercode[hoursFour] == 0) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/Sun.png) center no-repeat";
+                                if (DateLocaleTomorrowFour > sunriseFour && DateLocaleTomorrowFour < sunsetFour) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/Sun.png) center no-repeat";
+                                    console.log('день');
+                                } else {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/Moon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursFour] == 1 || json.hourly.weathercode[hoursFour] == 2) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/cloudSun.png) center no-repeat";
+                                if (DateLocaleTomorrowFour > sunriseFour && DateLocaleTomorrowFour < sunsetFour) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/cloudSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                } else {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/cloudMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursFour] == 3) {
                                 IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/cloud.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursFour] == 45) {
@@ -435,21 +893,93 @@ function geocode() {
                             } else if (json.hourly.weathercode[hoursFour] == 57) {
                                 IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/FreezeDrizzleMax.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursFour] == 61) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                                if (DateLocaleTomorrowFour > sunriseFour && DateLocaleTomorrowFour < sunsetFour) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMinMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMinMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursFour] == 63) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                                if (DateLocaleTomorrowFour > sunriseFour && DateLocaleTomorrowFour < sunsetFour) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMidMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMidMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursFour] == 65) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                                if (DateLocaleTomorrowFour > sunriseFour && DateLocaleTomorrowFour < sunsetFour) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMaxMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainMaxMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursFour] == 66) {
                                 IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainSnowMin.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursFour] == 67) {
                                 IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/rainSnowMax.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursFour] == 71) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                                if (DateLocaleTomorrowFour > sunriseFour && DateLocaleTomorrowFour < sunsetFour) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMinSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMinMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMinMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursFour] == 73) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                                if (DateLocaleTomorrowFour > sunriseFour && DateLocaleTomorrowFour < sunsetFour) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMidSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMidMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMidMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursFour] == 75) {
-                                IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                                if (DateLocaleTomorrowFour > sunriseFour && DateLocaleTomorrowFour < sunsetFour) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMaxSun.png) center no-repeat";
+                                    console.log('день');
+                                } else if (sunriseFour == 'Invalid Date' && sunsetFour == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                    console.log('ночь');
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMaxMoon.png) center no-repeat";
+                                } else {
+                                    IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMaxMoon.png) center no-repeat";
+                                    console.log('ночь');
+                                }
                             } else if (json.hourly.weathercode[hoursFour] == 77) {
                                 IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/SnowGrains.png) center no-repeat";
                             } else if (json.hourly.weathercode[hoursFour] == 80) {
@@ -464,22 +994,6 @@ function geocode() {
                                 IconWeatherFour.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
                             } 
 
-
-
-                            
-
-                            if (hoursOne >= 24) {
-                                hoursOne -= 24;
-                            }
-                            if (hoursTwo >= 24) {
-                                hoursTwo -= 24;
-                            }
-                            if (hoursThree >= 24) {
-                                hoursThree -= 24;
-                            }
-                            if (hoursFour >= 24) {
-                                hoursFour -= 24;
-                            }
                             if (minutesNow < 10) {
                                 minutesNow = '0' +  minutesNow;
                             }
@@ -499,10 +1013,10 @@ function geocode() {
                                 hoursFour = '0' +  hoursFour;
                             }
                             hour.innerHTML = hourNow + ":" + minutesNow;
-                            timeDownOne.innerHTML = hoursOne + ":" + '00';
-                            timeDownTwo.innerHTML = hoursTwo + ":" + '00';
-                            timeDownThree.innerHTML = hoursThree + ":" + '00';
-                            timeDownFour.innerHTML = hoursFour + ":" + '00';
+                            timeDownOne.innerHTML = hoursOneNotStatic + ":" + '00';
+                            timeDownTwo.innerHTML = hoursTwoNotStatic + ":" + '00';
+                            timeDownThree.innerHTML = hoursThreeNotStatic + ":" + '00';
+                            timeDownFour.innerHTML = hoursFourNotStatic + ":" + '00';
                             console.log(json.timezone)
                             console.log(json)
                         }
