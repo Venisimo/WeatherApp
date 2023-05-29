@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="styles/images/Sun.ico" type="image/png">
+    <link rel="stylesheet" href="styles/styleThreeDays.css">
+    <title>Погода на 3 дня</title>
+</head>
+<header>
+    <div class="verticallyLeft">
+        <div class="left">
+            <img src="./styles/images/iconsPhenomenon/cloudSun.png"></img>
+            <p>VenWeather</p>
+        </div>
+        <span class="C">°C</span>
+        <label class="checkboxInput">
+            <input type="checkbox">
+            <span class="F">°F</span>
+        </label>        
+    </div>
+    <ul>
+        <li id="today"><a href="/weatherNow">Сегодня</a></li>
+        <li id="threeDays"><a href="/weatherThreeDays">3 дня</a></li>
+        <li id="week"><a href="/weatherWeek">Неделя</a></li>
+        <li id="tenDays"><a href="/weatherTenDays">10 дней</a></li>
+    </ul>
+</header>
+<body>
+    <div class="container">
+        <div class="search">
+            <i id="IconlocV1"></i>   
+            <input class="searchInput" placeholder="Введите названия локации">
+            <button class="lupa"></button>
+        </div>
+            <div class="BigRectangle">
+                <div class="BigRectangleTop">
+                    <i id="Iconloc">
+                    </i>
+                    <p class="city">
+                        Населенный пункт
+                    </p>
+                </div>
+                <div class="BigRectangleMid">
+                    <div class="IconTemp">
+                        <div id="IconTempCenter"></div>
+                        <p class="TempCenter"></p>
+                    </div>
+                    <div class="time">
+                        <p id="date">Apr 20</p>
+                        <p id="Hour">21:47</p>
+                    </div>
+                </div>
+                <div class="BigRectangleDown">
+                    <p>Скорость ветра:</p>
+                    <p>Давление, мм. рт. ст.:</p>
+                    <p>Влажность:</p>
+                </div>
+                <div class="BigRectangleDownData">
+                    <p id="BRWind">6 м/с</p>
+                    <p id="BRPressure">748 мм.</p>
+                    <p id="BRHumidity">70 %</p>
+                </div>
+            </div>
+            <div class="rectangles">
+                        <div class="rectangle">
+                            <div class="timeDown" id="timeDownOne">Apr 20</div>
+                            <div class="rectangleBg" id="IconWeatherOne"></div>
+                            <div class="TemperatureDay" id="TempOne">Днем 6°C</div>
+                            <div class="TemperatureNight" id="TempOneNight">Ночью -2°C</div>     
+                            <div class="WeatherText">
+                                <p id="windOne"></p>
+                                <p id="airPressureOne"></p>
+                                <p id="humidityOne"></p>
+                            </div> 
+                        </div>
+                        <div class="rectangle2">
+                            <div class="timeDown" id="timeDownTwo">Apr 17</div>
+                            <div class="rectangleBg2" id="IconWeatherTwo"></div>
+                            <div class="TemperatureDay" id="TempTwo">Днем 3°C</div>
+                            <div class="TemperatureNight" id="TempTwoNight">Ночью -3°C</div>
+                            <div class="WeatherText">
+                                <p id="windTwo"></p>
+                                <p id="airPressureTwo"></p>
+                                <p id="humidityTwo"></p>
+                            </div>         
+                        </div>
+                        <div class="rectangle3">
+                            <div class="timeDown" id="timeDownThree">Apr 18</div>
+                            <div class="rectangleBg3" id="IconWeatherThree"></div>
+                            <div class="TemperatureDay" id="TempThree">Днем 3°C</div>
+                            <div class="TemperatureNight" id="TempThreeNight">Ночью -3°C</div>
+                            <div class="WeatherText">
+                                <p id="windThree"></p>
+                                <p id="airPressureThree"></p>
+                                <p id="humidityThree"></p>
+                            </div>     
+                        </div>
+        </div>
+    <script src="scripts/jquery-3.7.0.min.js"></script>
+    <script src="scripts/forecastThreeDays.js"></script>
+</body>
+</html>

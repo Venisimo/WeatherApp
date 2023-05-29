@@ -8,3 +8,5 @@ illustrator/
 gismeteo/
 КодыПамятка/
 node_modules/
+*.docx
+week.html

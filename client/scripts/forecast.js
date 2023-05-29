@@ -1,4 +1,4 @@
-const input = document.querySelector('input');
+const input = document.querySelector('.searchInput');
 const container = document.querySelector('.container');
 const rectangles = document.querySelector('.rectangles');
 const search = document.querySelector('.search');
@@ -51,6 +51,31 @@ let apiMap;
 let city;
 let lat;
 let lon;
+let degress = 'celsius';
+let degressSign = '°C';
+let degressNotActive = 'fahrenheit';
+
+$(document).ready(function() {
+    $(document).on('click', '.checkboxInput', function(event) {
+        $('C').toggleClass('notActive');
+        $(this).toggleClass('active');
+        if (degressSign == '°F'){    
+            degress = 'celsius';
+            degressSign = '°C';
+            $('.C').css('color', '#fff');
+            degressNotActive = 'fahrenheit'
+        }
+        else{
+            degress = 'fahrenheit';
+            degressSign = '°F';
+            $('.C').css('color', '#000');
+            degressNotActive = 'celsius'
+        }
+        let isChecked = $(this).find('input').prop('checked');
+        $(this).find('input').prop('checked', !isChecked);
+        return false;
+    });
+});
 
 input.addEventListener('focus', function() {
     input.placeholder = "";
@@ -85,12 +110,19 @@ function geocode() {
                 console.log(lon);
 
                 function forecast() {
-                    apiWeather = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,weathercode,surface_pressure,windspeed_10m&daily=sunrise,sunset&current_weather=true&windspeed_unit=ms&forecast_days=2&timezone=auto`
-                
+                    apiWeather = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,weathercode,surface_pressure,windspeed_10m&daily=sunrise,sunset&current_weather=true&windspeed_unit=ms&forecast_days=2&timezone=auto&temperature_unit=${degress}`
+                    
+                    apiWeatherNotActive = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,weathercode,surface_pressure,windspeed_10m&daily=sunrise,sunset&current_weather=true&windspeed_unit=ms&forecast_days=2&timezone=auto&temperature_unit=${degressNotActive}`
+                    console.log(apiWeatherNotActive);
+
                     if (city = '') {
                         return
                     }
-                
+                    fetch(apiWeatherNotActive).then(response => response.json()).then(
+                        json => {
+                            console.log(json);
+                        });
+
                     fetch(apiWeather).then(response => response.json()).then(
                         json => {
                             let dat = new Date();
@@ -198,7 +230,7 @@ function geocode() {
                                 console.log('ночь');
                             }
 
-                            TempCenter.innerHTML = `${parseInt(json.current_weather.temperature)}°C`;
+                            TempCenter.innerHTML = `${parseInt(json.current_weather.temperature)}${degressSign}`;
                             BRWind.innerHTML = `${parseInt(json.current_weather.windspeed)} м/с`;
                             BRPressure.innerHTML = `${parseInt(json.hourly.surface_pressure[hourNow] * 0.75)} мм.`;
                             BRHumidity.innerHTML = `${json.hourly.relativehumidity_2m[hourNow]}%`;
@@ -211,10 +243,10 @@ function geocode() {
                             let hoursThree = hourNow + 18;
                             let hoursFour = hourNow + 24;
 
-                            TempOne.innerHTML = `${parseInt(json.hourly.temperature_2m[hoursOne])}°C`;
-                            TempTwo.innerHTML = `${parseInt(json.hourly.temperature_2m[hoursTwo])}°C`;
-                            TempThree.innerHTML = `${parseInt(json.hourly.temperature_2m[hoursThree])}°C`;
-                            TempFour.innerHTML = `${parseInt(json.hourly.temperature_2m[hoursFour])}°C`;
+                            TempOne.innerHTML = `${parseInt(json.hourly.temperature_2m[hoursOne])}${degressSign}`;
+                            TempTwo.innerHTML = `${parseInt(json.hourly.temperature_2m[hoursTwo])}${degressSign}`;
+                            TempThree.innerHTML = `${parseInt(json.hourly.temperature_2m[hoursThree])}${degressSign}`;
+                            TempFour.innerHTML = `${parseInt(json.hourly.temperature_2m[hoursFour])}${degressSign}`;
 
                             airPressureOne.innerHTML = `${parseInt(json.hourly.surface_pressure[hoursOne]* 0.75)} мм.`;
                             airPressureTwo.innerHTML = `${parseInt(json.hourly.surface_pressure[hoursTwo]* 0.75)} мм.`;
@@ -1038,13 +1070,4 @@ btnSearch.addEventListener("click", () => {
     geocode();
     // forecast();
 });
-
-
-// $(document).ready(function(){
-//     $("#slider").owlCarousel({
-//         dots: false,
-//         items: 4,
-//         margin: 155
-//     });
-// });
 

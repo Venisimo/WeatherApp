@@ -9,22 +9,29 @@
     <title>Погода сегодня</title>
 </head>
 <header>
-    <div class="left">
-        <img src="./styles/images/iconsPhenomenon/cloudSun.png"></img>
-        <p>VenWeather</p>
+    <div class="verticallyLeft">
+        <div class="left">
+            <img src="./styles/images/iconsPhenomenon/cloudSun.png"></img>
+            <p>VenWeather</p>
+        </div>
+        <span class="C">°C</span>
+        <label class="checkboxInput">
+            <input type="checkbox">
+            <span class="F">°F</span>
+        </label>        
     </div>
     <ul>
-        <li id="today"><a href="./weatherNow.html">Сегодня</a></li>
-        <li id="threeDays"><a href="./weatherThreeDays.html">3 дня</a></li>
-        <li id="week"><a href="./week.html">Неделя</a></li>
-        <li id="tenDays"><a href="./tenDays.html">10 дней</a></li>
+        <li id="today"><a href="/weatherNow">Сегодня</a></li>
+        <li id="threeDays"><a href="/weatherThreeDays">3 дня</a></li>
+        <li id="week"><a href="/weatherWeek">Неделя</a></li>
+        <li id="tenDays"><a href="/weatherTenDays">10 дней</a></li>
     </ul>
 </header>
 <body>
     <div class="container">
         <div class="search">
             <i id="IconlocV1"></i>   
-            <input placeholder="Введите названия локации">
+            <input class="searchInput" placeholder="Введите названия локации">
             <button class="lupa"></button>
         </div>
             <div class="BigRectangle">
@@ -119,7 +126,7 @@
             </div>
         </div>
     </div>
-    <!-- <script src="scripts/script.js"></script> -->
-    <script src="scripts/scriptTest.js"></script>
+    <script src="scripts/jquery-3.7.0.min.js"></script>
+    <script src="scripts/forecast.js"></script>
 </body>
 </html>
