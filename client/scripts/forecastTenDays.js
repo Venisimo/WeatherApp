@@ -182,45 +182,46 @@ function geocode() {
                             let month = "";
                             let hourNow = dat.getUTCHours();
                             let dayNow = dat.getUTCDate();
+                            let nonthNow = dat.getUTCMonth();
                             let minutesNow = dat.getUTCMinutes();
                             container.classList.add('active');
                             console.log(json);
 
 
-                            if (dat.getMonth() == 0) {
+                            if (nonthNow == 0) {
                                 month = "Jan"
                             }
-                            else if (dat.getMonth() == 1) {
+                            else if (nonthNow == 1) {
                                 month = "Feb"
                             }
-                            else if (dat.getMonth() == 2) {
+                            else if (nonthNow == 2) {
                                 month = "Mar"
                             }
-                            else if (dat.getMonth() == 3) {
+                            else if (nonthNow == 3) {
                                 month = "Apr"
                             }
-                            else if (dat.getMonth() == 4) {
+                            else if (nonthNow == 4) {
                                 month = "May"
                             }
-                            else if (dat.getMonth() == 5) {
+                            else if (nonthNow == 5) {
                                 month = "Jun"
                             }
-                            else if (dat.getMonth() == 6) {
+                            else if (nonthNow == 6) {
                                 month = "Jul"
                             }
-                            else if (dat.getMonth() == 7) {
+                            else if (nonthNow == 7) {
                                 month = "Aug"
                             }
-                            else if (dat.getMonth() == 8) {
+                            else if (nonthNow == 8) {
                                 month = "Sep"
                             }
-                            else if (dat.getMonth() == 9) {
+                            else if (nonthNow == 9) {
                                 month = "Oct"
                             }
-                            else if (dat.getMonth() == 10) {
+                            else if (nonthNow == 10) {
                                 month = "Nov"
                             }
-                            else if (dat.getMonth() == 11) {
+                            else if (nonthNow == 11) {
                                 month = "Dec"
                             }
 
@@ -264,7 +265,100 @@ function geocode() {
                                 }            
                             }
                             
-                            let DateLocale = new Date(dat.getUTCFullYear(), dat.getMonth(), dayNow, hourNow, minutesNow);
+                            
+                            if (month == 'Jan') {
+                                if (dayNow > 31) {
+                                    month = 'Feb';
+                                    dayNow = 1;
+                                    monthNow = 1;
+                                }
+                            }
+                            if (month == 'Feb') {
+                                if (dat.getFullYear() % 4 == 0) {
+                                    if (dayNow > 29) {
+                                        month = 'Mar';
+                                        dayNow = 1;
+                                        monthNow = 2;
+                                    } else if (dayNow > 28) {
+                                        month = 'Mar';
+                                        dayNow = 1;
+                                        monthNow = 2;
+                                    }
+                                }
+                            }
+                            if (month == 'Mar') {
+                                if (dayNow > 31) {
+                                    month = 'Jun';
+                                    dayNow = 1;
+                                    monthNow = 3;
+                                }
+                            }
+                            if (month == 'Apr') {
+                                if (dayNow > 30) {
+                                    month = 'May';
+                                    dayNow = 1;
+                                    monthNow = 4;
+                                }
+                            }
+                            if (month == 'May') {
+                                if (dayNow > 31) {
+                                    month = 'Jun';
+                                    dayNow = 1;
+                                    monthNow = 5;
+                                }
+                            }
+                            if (month == 'Jun') {
+                                if (dayNow > 30) {
+                                    month = 'Jul';
+                                    dayNow = 1;
+                                    monthNow = 6;
+                                }
+                            }
+                            if (month == 'Jul') {
+                                if (dayNow > 31) {
+                                    month = 'Jun';
+                                    dayNow = 1;
+                                    monthNow = 7;
+                                }
+                            }
+                            if (month == 'Aug') {
+                                if (dayNow > 31) {
+                                    month = 'Sen';
+                                    dayNow = 1;
+                                    monthNow = 7;
+                                }
+                            }
+                            if (month == 'Sen') {
+                                if (dayNow > 30) {
+                                    month = 'Oct';
+                                    dayNow = 1;
+                                    monthNow = 9;
+                                }
+                            }
+                            if (month == 'Oct') {
+                                if (dayNow > 31) {
+                                    month = 'Nov';
+                                    dayNow = 1;
+                                    monthNow = 10;
+                                }
+                            }
+                            if (month == 'Nov') {
+                                if (dayNow > 30) {
+                                    month = 'Dec';
+                                    dayNow = 1;
+                                    monthNow = 11;
+                                }
+                            }
+                            if (month == 'Dec') {
+                                if (dayNow > 31) {
+                                    month = 'Jan';
+                                    dayNow = 1;
+                                    monthNow = 0;
+                                }
+                            }
+
+
+                            let DateLocale = new Date(dat.getUTCFullYear(), nonthNow, dayNow, hourNow, minutesNow);
                             
                             console.log(json.daily.sunrise);
                             let sunrise = new Date(json.daily.sunrise[0]);
@@ -275,9 +369,9 @@ function geocode() {
                         
                             if (DateLocale > sunrise && DateLocale < sunset) {
                                 console.log('день');
-                            } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                            } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow > 2 && nonthNow < 8) {
                                 console.log('день');
-                            } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                            } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow < 2 || nonthNow > 8) {
                                 console.log('ночь');
                             } else {
                                 console.log('ночь');
@@ -941,9 +1035,9 @@ function geocode() {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/cloudSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow > 2 && nonthNow < 8) {
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow < 2 || nonthNow > 8) {
                                     console.log('ночь');
                                 } else {
                                     wIcon.style.background = "url(styles/images/BIGicon/cloudMoonBIG.png) center no-repeat";
@@ -969,10 +1063,10 @@ function geocode() {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMinSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow > 2 && nonthNow < 8) {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMinSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow < 2 || nonthNow > 8) {
                                     console.log('ночь');
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMinMoonBIG.png) center no-repeat";
                                 } else {
@@ -983,10 +1077,10 @@ function geocode() {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMidSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow > 2 && nonthNow < 8) {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMidSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow < 2 || nonthNow > 8) {
                                     console.log('ночь');
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMidMoonBIG.png) center no-repeat";
                                 } else {
@@ -997,10 +1091,10 @@ function geocode() {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMaxSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow > 2 && nonthNow < 8) {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMaxSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow < 2 || nonthNow > 8) {
                                     console.log('ночь');
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMaxMoonBIG.png) center no-repeat";
                                 } else {
@@ -1015,10 +1109,10 @@ function geocode() {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMinSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow > 2 && nonthNow < 8) {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMinSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow < 2 || nonthNow > 8) {
                                     console.log('ночь');
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMinMoonBIG.png) center no-repeat";
                                 } else {
@@ -1029,10 +1123,10 @@ function geocode() {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMidSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow > 2 && nonthNow < 8) {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMidSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow < 2 || nonthNow > 8) {
                                     console.log('ночь');
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMidMoonBIG.png) center no-repeat";
                                 } else {
@@ -1043,10 +1137,10 @@ function geocode() {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMaxSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() > 2 && dat.getMonth() < 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow > 2 && nonthNow < 8) {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMaxSunBIG.png) center no-repeat";
                                     console.log('день');
-                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && dat.getMonth() < 2 || dat.getMonth() > 8) {
+                                } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && nonthNow < 2 || nonthNow > 8) {
                                     console.log('ночь');
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMaxMoonBIG.png) center no-repeat";
                                 } else {
