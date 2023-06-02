@@ -1,25 +1,11 @@
 import  express  from "express";
 import __dirname from "../__dirname.js";
 import path from 'path';
-import fs from 'fs';
-import expressSession from 'express-session';
-import cookieParser from 'cookie-parser';
 
 let app = express();
-let secret = 'qwerty';
-app.use(cookieParser(secret));
-app.use(expressSession({
-	secret: secret,
-}));
 
 app.get('/weatherNow', async function(req, res){
-    req.session.test = 'abcde'
-    let layout = await fs.promises.readFile(__dirname + '/client/pages/weatherNow.html', 'utf-8');
-    layout = layout.replace('<input class="searchInput" placeholder="Введите названия локации"></input>', '<input class="searchInput" placeholder="Введите названия локации" value="' + req.session.test + '">')
-    console.log(layout);
-    res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write(layout);
-	res.end();
+    res.sendFile(__dirname + '/client/pages/weatherNow.html');
 });
 
 app.get('/weatherThreeDays', function(req, res){
@@ -40,3 +26,4 @@ app.use(express.static(path.join(__dirname, '/client/')))
 app.listen(3000, function(req, res) {
 	console.log('running');
 })
+
