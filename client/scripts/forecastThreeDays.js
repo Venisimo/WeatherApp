@@ -3,6 +3,7 @@ const container = document.querySelector('.container');
 const rectangles = document.querySelector('.rectangles');
 const search = document.querySelector('.search');
 const BigRectangle = document.querySelector('.BigRectangle');
+const BigRectangleNotFound = document.querySelector('.BigRectangleNotFound');
 const btnSearch = document.querySelector('.lupa');
 const TempCenter = document.querySelector('.TempCenter');
 const wIcon = document.querySelector('#IconTempCenter');
@@ -95,8 +96,9 @@ function geocode() {
         json => {
                 console.log(json);
                 if(json.length == 0) {
-                    container.classList.add('active');
-                    cityName.innerHTML = 'Не найден';
+                    container.classList.add('notFound');
+                    BigRectangle.style.display = 'none';
+                    BigRectangleNotFound.style.display = 'flex';
                     return
                 }
 
@@ -128,7 +130,10 @@ function geocode() {
                             let dayNow = dat.getUTCDate();
                             let monthNow = dat.getUTCMonth();
                             let minutesNow = dat.getUTCMinutes();
+                            BigRectangleNotFound.style.display = 'none';
+                            BigRectangle.style.display = '';
                             container.classList.add('active');
+                            container.classList.remove('notFound');
                             console.log(json);
 
 
@@ -722,11 +727,11 @@ function geocode() {
                             } else if (resWeatherCodeOne == 86) {
                                 IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
                             } else if (resWeatherCodeOne == 95) {
-                                IconWeatherOne.style.background = "url(styles/images/iconPhenomenon/thunderstorm.png) center no-repeat";
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/thunderstorm.png) center no-repeat";
                             } else if (resWeatherCodeOne == 96) {
-                                IconWeatherOne.style.background = "url(styles/images/iconPhenomenon/thunderstormRainMin.png) center no-repeat";
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/thunderstormRainMin.png) center no-repeat";
                             } else if (resWeatherCodeOne == 99) {
-                                IconWeatherOne.style.background = "url(styles/images/iconPhenomenon/thunderstormRainMax.png) center no-repeat";
+                                IconWeatherOne.style.background = "url(styles/images/iconsPhenomenon/thunderstormRainMax.png) center no-repeat";
                             }
                             
                             
@@ -779,11 +784,11 @@ function geocode() {
                             } else if (resWeatherCodeTwo == 86) {
                                 IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
                             } else if (resWeatherCodeTwo == 95) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconPhenomenon/thunderstorm.png) center no-repeat";
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/thunderstorm.png) center no-repeat";
                             } else if (resWeatherCodeTwo == 96) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconPhenomenon/thunderstormRainMin.png) center no-repeat";
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/thunderstormRainMin.png) center no-repeat";
                             } else if (resWeatherCodeTwo == 99) {
-                                IconWeatherTwo.style.background = "url(styles/images/iconPhenomenon/thunderstormRainMax.png) center no-repeat";
+                                IconWeatherTwo.style.background = "url(styles/images/iconsPhenomenon/thunderstormRainMax.png) center no-repeat";
                             }
                             
             
@@ -836,11 +841,11 @@ function geocode() {
                             } else if (resWeatherCodeThree == 86) {
                                 IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/snowMax.png) center no-repeat";
                             } else if (resWeatherCodeThree == 95) {
-                                IconWeatherThree.style.background = "url(styles/images/iconPhenomenon/thunderstorm.png) center no-repeat";
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/thunderstorm.png) center no-repeat";
                             } else if (resWeatherCodeThree == 96) {
-                                IconWeatherThree.style.background = "url(styles/images/iconPhenomenon/thunderstormRainMin.png) center no-repeat";
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/thunderstormRainMin.png) center no-repeat";
                             } else if (resWeatherCodeThree == 99) {
-                                IconWeatherThree.style.background = "url(styles/images/iconPhenomenon/thunderstormRainMax.png) center no-repeat";
+                                IconWeatherThree.style.background = "url(styles/images/iconsPhenomenon/thunderstormRainMax.png) center no-repeat";
                             }
                             
                           

@@ -114,6 +114,10 @@ body {
     max-height: 1000px;
     transition: max-height 1s ease-in-out;
 }
+.container.notFound {
+    max-height: 550px;
+    transition: max-height 1s ease-in-out;
+}
 .search {
     width: 850px;
     display: flex;
@@ -167,8 +171,18 @@ body {
     border-radius: 32px;
     margin-bottom: 4em;
     box-shadow: 5px 3px 3px #9cd7db;
-    /* opacity: 0;
-    visibility: hidden; */
+}
+.BigRectangleNotFound {
+    margin: auto;
+    width: 900px;
+    height: 425px;
+    background: linear-gradient(#46E7F1 30%,#45AEE9 100%);
+    border-radius: 32px;
+    margin-bottom: 4em;
+    box-shadow: 5px 3px 3px #9cd7db;
+    display: none;
+    align-items: center;
+    justify-content: center;
 }
 #Iconloc {
     width: 50px;
