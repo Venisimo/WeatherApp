@@ -448,3 +448,114 @@ body {
     flex-direction: row;
     justify-content: space-around;
 }
+
+@media (max-width: 850px) {
+    .left {
+        margin-right: 0px;
+    }
+    .search {
+        width: 450px;
+    }
+    #IconlocV1 {
+        width: 85px;
+        height: 70px;
+        background: url(images/iconsMeter/locV1.png);
+    }
+    .BigRectangle {
+        width: 600px;
+        height: 425px;
+        margin-bottom: 2em;
+    }
+    .city {
+        width: 550px;
+    }
+    .IconTemp {
+        width: 450px;
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+    }
+    .BigRectangleDown {
+        font-size: 20px; 
+    }
+    .rectangle{
+        width: 280px;
+        height: 265px;  
+    }
+    .rectangleBg {
+        width: 280px;
+        height: 170px;
+    }
+    .rectangle2{
+        width: 280px;
+        height: 265px;
+    }
+    .rectangleBg2 {
+        width: 280px;
+        height: 170px;
+    }
+    .rectangle3{
+        width: 280px;
+        height: 265px;
+    }
+    .rectangleBg3 {
+        width: 280px;
+        height: 170px;
+    }
+    .rectangle4{
+        width: 280px;
+        height: 265px;
+    }
+    .rectangleBg4 {
+        width: 280px;
+        height: 170px;
+    }
+    .rectangle5{
+        width: 280px;
+        height: 265px;
+    }
+    .rectangleBg5 {
+        width: 280px;
+        height: 170px;
+    }
+    .rectangle6{
+        width: 280px;
+        height: 265px;
+    }
+    .rectangleBg6 {
+        width: 280px;
+        height: 170px;
+    }
+    .rectangle7{
+        width: 280px;
+        height: 265px;
+    }
+    .rectangleBg7 {
+        width: 280px;
+        height: 170px;
+    }
+    .rectangle8{
+        width: 280px;
+        height: 265px;
+    }
+    .rectangleBg8 {
+        width: 280px;
+        height: 170px;
+    }
+    .rectangle9{
+        width: 280px;
+        height: 265px;
+    }
+    .rectangleBg9 {
+        width: 280px;
+        height: 170px;
+    }
+    .rectangle10{
+        width: 280px;
+        height: 265px;
+    }
+    .rectangleBg10 {
+        width: 280px;
+        height: 170px;
+    }
+}

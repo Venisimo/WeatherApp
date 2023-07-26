@@ -127,6 +127,9 @@ $(document).ready(function() {
         }
         let isChecked = $(this).find('input').prop('checked');
         $(this).find('input').prop('checked', !isChecked);
+        if (input.value != "") {
+            geocode();
+        }
         return false;
     });
 });
@@ -137,6 +140,18 @@ input.addEventListener('focus', function() {
 
 input.addEventListener('blur', function() {
     input.placeholder = "Введите названия локации";
+});
+
+input.addEventListener("keyup", e => {
+    if (e.key == "Enter" && input.value != "") {
+        geocode();
+    }
+});
+
+btnSearch.addEventListener("click", () => {
+    if (input.value != "") {
+        geocode();
+    }
 });
 
 function geocode() {
@@ -293,7 +308,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (dayNow > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     dayNow = 1;
                                     monthNow = 3;
                                 }
@@ -321,7 +336,7 @@ function geocode() {
                             }
                             if (month == 'Jul') {
                                 if (dayNow > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     dayNow = 1;
                                     monthNow = 7;
                                 }
@@ -1760,7 +1775,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (dayOne > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     dayOne = 1;
                                 }
                             }
@@ -1784,7 +1799,7 @@ function geocode() {
                             }
                             if (month == 'Jul') {
                                 if (dayOne > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     dayOne = 1;
                                 }
                             }
@@ -1839,7 +1854,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (dayTwo > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     dayTwo = 1;
                                 }
                             }
@@ -1863,7 +1878,7 @@ function geocode() {
                             }
                             if (month == 'Jul') {
                                 if (dayTwo > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     dayTwo = 1;
                                 }
                             }
@@ -1918,7 +1933,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (dayThree > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     dayThree = 1;
                                 }
                             }
@@ -1942,7 +1957,7 @@ function geocode() {
                             }
                             if (month == 'Jul') {
                                 if (dayThree > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     dayThree = 1;
                                 }
                             }
@@ -1997,7 +2012,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (dayFour > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     dayFour = 1;
                                 }
                             }
@@ -2021,7 +2036,7 @@ function geocode() {
                             }
                             if (month == 'Jul') {
                                 if (dayFour > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     dayFour = 1;
                                 }
                             }
@@ -2076,7 +2091,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (dayFive > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     dayFive = 1;
                                 }
                             }
@@ -2100,7 +2115,7 @@ function geocode() {
                             }
                             if (month == 'Jul') {
                                 if (dayFive > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     dayFive = 1;
                                 }
                             }
@@ -2155,7 +2170,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (daySix > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     daySix = 1;
                                 }
                             }
@@ -2173,13 +2188,13 @@ function geocode() {
                             }
                             if (month == 'Jun') {
                                 if (daySix > 30) {
-                                    month = 'July';
+                                    month = 'Jul';
                                     daySix = 1;
                                 }
                             }
                             if (month == 'Jul') {
                                 if (daySix > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     daySix = 1;
                                 }
                             }
@@ -2234,7 +2249,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (daySeven > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     daySeven = 1;
                                 }
                             }
@@ -2252,13 +2267,13 @@ function geocode() {
                             }
                             if (month == 'Jun') {
                                 if (daySeven > 30) {
-                                    month = 'July';
+                                    month = 'Jul';
                                     daySeven = 1;
                                 }
                             }
                             if (month == 'Jul') {
                                 if (daySeven > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     daySeven = 1;
                                 }
                             }
@@ -2520,24 +2535,19 @@ function geocode() {
 }
 
 
-input.addEventListener("keyup", e => {
-    if (e.key == "Enter" && input.value != "") {
-        geocode();
-        // forecast();
-    }
-});
-
-btnSearch.addEventListener("click", () => {
-    geocode();
-    // forecast();
-});
-
-
 $(document).ready(function(){
-    $("#slider").owlCarousel({
-        dots: false,
-        items: 4,
-        margin: 155
-    });
+    if (window.innerWidth > 850) {
+        $("#slider").owlCarousel({
+            dots: false,
+            items: 4,
+            margin: 155
+        });
+    } else {
+        $("#slider").owlCarousel({
+            dots: false,
+            items: 2,
+            margin: 50
+        });
+    }
 });
 

@@ -187,7 +187,7 @@ body {
     justify-content: center;
 }
 #Iconloc {
-    width: 50px;
+    width: 70px;
     height: 70px;
     background: url(images/iconsMeter/loc.png) center no-repeat;
 }
@@ -359,4 +359,35 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+@media (max-width: 850px) {
+    .left {
+        margin-right: 0px;
+    }
+    .search {
+        width: 450px;
+    }
+    #IconlocV1 {
+        width: 85px;
+        height: 70px;
+        background: url(images/iconsMeter/locV1.png);
+    }
+    .BigRectangle {
+        width: 600px;
+        height: 425px;
+        margin-bottom: 2em;
+    }
+    .city {
+        width: 550px;
+    }
+    .IconTemp {
+        width: 400px;
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+    }
+    .BigRectangleDown {
+        font-size: 20px; 
+    }
 }

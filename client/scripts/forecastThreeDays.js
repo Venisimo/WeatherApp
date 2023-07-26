@@ -71,6 +71,9 @@ $(document).ready(function() {
         }
         let isChecked = $(this).find('input').prop('checked');
         $(this).find('input').prop('checked', !isChecked);
+        if (input.value != "") {
+            geocode();
+        }
         return false;
     });
 });
@@ -81,6 +84,18 @@ input.addEventListener('focus', function() {
 
 input.addEventListener('blur', function() {
     input.placeholder = "Введите названия локации";
+});
+
+input.addEventListener("keyup", e => {
+    if (e.key == "Enter" && input.value != "") {
+        geocode();
+    }
+});
+
+btnSearch.addEventListener("click", () => {
+    if (input.value != "") {
+        geocode();
+    }
 });
 
 function geocode() {
@@ -237,7 +252,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (dayNow > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     dayNow = 1;
                                     monthNow = 3;
                                 }
@@ -265,7 +280,7 @@ function geocode() {
                             }
                             if (month == 'Jul') {
                                 if (dayNow > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     dayNow = 1;
                                     monthNow = 7;
                                 }
@@ -869,7 +884,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (dayOne > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     dayOne = 1;
                                 }
                             }
@@ -893,7 +908,7 @@ function geocode() {
                             }
                             if (month == 'Jul') {
                                 if (dayOne > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     dayOne = 1;
                                 }
                             }
@@ -948,7 +963,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (dayTwo > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     dayTwo = 1;
                                 }
                             }
@@ -972,7 +987,7 @@ function geocode() {
                             }
                             if (month == 'Jul') {
                                 if (dayTwo > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     dayTwo = 1;
                                 }
                             }
@@ -1027,7 +1042,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (dayThree > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     dayThree = 1;
                                 }
                             }
@@ -1051,7 +1066,7 @@ function geocode() {
                             }
                             if (month == 'Jul') {
                                 if (dayThree > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     dayThree = 1;
                                 }
                             }
@@ -1104,15 +1119,3 @@ function geocode() {
             forecast();
         })
 }
-
-
-input.addEventListener("keyup", e => {
-    if (e.key == "Enter" && input.value != "") {
-        geocode();
-    }
-});
-
-btnSearch.addEventListener("click", () => {
-    geocode();
-});
-

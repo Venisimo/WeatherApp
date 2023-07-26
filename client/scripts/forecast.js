@@ -54,7 +54,6 @@ let lat;
 let lon;
 let degress = 'celsius';
 let degressSign = '°C';
-let degressNotActive = 'fahrenheit';
 
 $(document).ready(function() {
     $(document).on('click', '.checkboxInput', function(event) {
@@ -64,16 +63,17 @@ $(document).ready(function() {
             degress = 'celsius';
             degressSign = '°C';
             $('.C').css('color', '#fff');
-            degressNotActive = 'fahrenheit'
         }
         else{
             degress = 'fahrenheit';
             degressSign = '°F';
             $('.C').css('color', '#000');
-            degressNotActive = 'celsius'
         }
         let isChecked = $(this).find('input').prop('checked');
         $(this).find('input').prop('checked', !isChecked);
+        if (input.value != "") {
+            geocode();
+        }
         return false;
     });
 });
@@ -93,7 +93,9 @@ input.addEventListener("keyup", e => {
 });
 
 btnSearch.addEventListener("click", () => {
-    geocode();
+    if (input.value != "") {
+        geocode();
+    }
 });
 
 function geocode() {
@@ -124,16 +126,9 @@ function geocode() {
                 function forecast() {
                     apiWeather = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,weathercode,surface_pressure,windspeed_10m&daily=sunrise,sunset&current_weather=true&windspeed_unit=ms&forecast_days=2&timezone=auto&temperature_unit=${degress}`
         
-                    apiWeatherNotActive = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,weathercode,surface_pressure,windspeed_10m&daily=sunrise,sunset&current_weather=true&windspeed_unit=ms&forecast_days=2&timezone=auto&temperature_unit=${degressNotActive}`
-                    console.log(apiWeatherNotActive);
-
                     if (city = '') {
                         return
                     }
-                    fetch(apiWeatherNotActive).then(response => response.json()).then(
-                        json => {
-                            console.log(json);
-                        });
 
                     fetch(apiWeather).then(response => response.json()).then(
                         json => {
@@ -250,7 +245,7 @@ function geocode() {
                             }
                             if (month == 'Mar') {
                                 if (dayNow > 31) {
-                                    month = 'Jun';
+                                    month = 'Apr';
                                     dayNow = 1;
                                     monthNow = 3;
                                 }
@@ -278,7 +273,7 @@ function geocode() {
                             }
                             if (month == 'Jul') {
                                 if (dayNow > 31) {
-                                    month = 'Jun';
+                                    month = 'Aug';
                                     dayNow = 1;
                                     monthNow = 7;
                                 }
