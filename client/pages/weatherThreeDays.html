@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="styles/images/Sun.ico" type="image/png">
     <link rel="stylesheet" href="styles/styleThreeDays.css">
+    <link rel="stylesheet" href="styles/owl.carousel.min.css">
+    <link rel="stylesheet" href="styles/owl.theme.default.min.css">
     <title>Погода на 3 дня</title>
 </head>
 <header>
@@ -69,6 +71,7 @@
                 </div>
             </div>
             <div class="rectangles">
+                <div class="owl-carousel owl-theme" id="slider">
                         <div class="rectangle">
                             <div class="timeDown" id="timeDownOne">Apr 20</div>
                             <div class="rectangleBg" id="IconWeatherOne"></div>
@@ -102,8 +105,10 @@
                                 <p id="humidityThree"></p>
                             </div>     
                         </div>
-        </div>
+                    </div>
+                </div>
     <script src="scripts/jquery-3.7.0.min.js"></script>
+    <script src="scripts/owl.carousel.min.js"></script>
     <script src="scripts/forecastThreeDays.js"></script>
 </body>
 </html>

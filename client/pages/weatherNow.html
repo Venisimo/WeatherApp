@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="styles/images/Sun.ico" type="image/png">
     <link rel="stylesheet" href="styles/styleNow.css">
+    <link rel="stylesheet" href="styles/owl.carousel.min.css">
+    <link rel="stylesheet" href="styles/owl.theme.default.min.css">
     <title>Погода сегодня</title>
 </head>
 <header>
@@ -69,69 +71,71 @@
                 </div>
             </div>
         <div class="rectangles">
-            <div class="rectangle">
-                <div class="timeDown" id="timeDownOne">4:00</div>
-                <div class="rectangleBg" id="IconWeatherOne"></div>
-                <div class="Temperature" id="TempOne">0°C</div>
-                <div class="IconsWeather">
-                    <div class="wind"></div>
-                    <div class="airPressure" ></div>
-                    <div class="humidity"></div>
-                </div>       
-                <div class="WeatherText">
-                    <p id="windOne"></p>
-                    <p id="airPressureOne"></p>
-                    <p id="humidityOne"></p>
-                </div> 
-            </div>
-            <div class="rectangle2">
-                <div class="timeDown" id="timeDownTwo">8:00</div>
-                <div class="rectangleBg2" id="IconWeatherTwo"></div>
-                <div class="Temperature" id="TempTwo">-1°C</div>
-                <div class="IconsWeather">
-                    <div class="wind"></div>
-                    <div class="airPressure"></div>
-                    <div class="humidity"></div>
+            <div class="owl-carousel owl-theme" id="slider">
+                <div class="rectangle">
+                    <div class="timeDown" id="timeDownOne">4:00</div>
+                    <div class="rectangleBg" id="IconWeatherOne"></div>
+                    <div class="Temperature" id="TempOne">0°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure" ></div>
+                        <div class="humidity"></div>
+                    </div>       
+                    <div class="WeatherText">
+                        <p id="windOne"></p>
+                        <p id="airPressureOne"></p>
+                        <p id="humidityOne"></p>
+                    </div> 
                 </div>
-                <div class="WeatherText">
-                    <p id="windTwo"></p>
-                    <p id="airPressureTwo"></p>
-                    <p id="humidityTwo"></p>
-                </div>         
-            </div>
-            <div class="rectangle3">
-                <div class="timeDown" id="timeDownThree">14:00</div>
-                <div class="rectangleBg3" id="IconWeatherThree"></div>
-                <div class="Temperature" id="TempThree">10°C</div>
-                <div class="IconsWeather">
-                    <div class="wind"></div>
-                    <div class="airPressure"></div>
-                    <div class="humidity"></div>
+                <div class="rectangle2">
+                    <div class="timeDown" id="timeDownTwo">8:00</div>
+                    <div class="rectangleBg2" id="IconWeatherTwo"></div>
+                    <div class="Temperature" id="TempTwo">-1°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p id="windTwo"></p>
+                        <p id="airPressureTwo"></p>
+                        <p id="humidityTwo"></p>
+                    </div>         
                 </div>
-                <div class="WeatherText">
-                    <p id="windThree">6 м/c</p>
-                    <p id="airPressureThree">748 мм.</p>
-                    <p id="humidityThree">70 %</p>
-                </div>     
-            </div>
-            <div class="rectangle4">
-                <div class="timeDown" id="timeDownFour">20:00</div>
-                <div class="rectangleBg4" id="IconWeatherFour"></div>
-                <div class="Temperature" id="TempFour">7°C</div>
-                <div class="IconsWeather">
-                    <div class="wind"></div>
-                    <div class="airPressure"></div>
-                    <div class="humidity"></div>
+                <div class="rectangle3">
+                    <div class="timeDown" id="timeDownThree">14:00</div>
+                    <div class="rectangleBg3" id="IconWeatherThree"></div>
+                    <div class="Temperature" id="TempThree">10°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p id="windThree">6 м/c</p>
+                        <p id="airPressureThree">748 мм.</p>
+                        <p id="humidityThree">70 %</p>
+                    </div>     
                 </div>
-                <div class="WeatherText">
-                    <p id="windFour">2</p>
-                    <p id="airPressureFour">2</p>
-                    <p id="humidityFour">2</p>
-                </div>     
+                <div class="rectangle4">
+                    <div class="timeDown" id="timeDownFour">20:00</div>
+                    <div class="rectangleBg4" id="IconWeatherFour"></div>
+                    <div class="Temperature" id="TempFour">7°C</div>
+                    <div class="IconsWeather">
+                        <div class="wind"></div>
+                        <div class="airPressure"></div>
+                        <div class="humidity"></div>
+                    </div>
+                    <div class="WeatherText">
+                        <p id="windFour">2</p>
+                        <p id="airPressureFour">2</p>
+                        <p id="humidityFour">2</p>
+                    </div>     
+                </div>
             </div>
         </div>
-    </div>
     <script src="scripts/jquery-3.7.0.min.js"></script>
+    <script src="scripts/owl.carousel.min.js"></script>
     <script src="scripts/forecast.js"></script>
 </body>
 </html>

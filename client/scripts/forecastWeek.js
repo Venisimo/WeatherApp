@@ -1954,8 +1954,8 @@ function geocode() {
 }
 
 
-$(document).ready(function(){
-    if (window.innerWidth > 850) {
+function initSlider() {
+    if (window.innerWidth > 1000) {
         $("#slider").owlCarousel({
             dots: false,
             items: 4,
@@ -1968,4 +1968,12 @@ $(document).ready(function(){
             margin: 50
         });
     }
+}
+
+$(document).ready(function() {
+    initSlider(); 
+    $(window).on('resize', function() {
+        $("#slider").trigger('destroy.owl.carousel');
+        initSlider();
+    });
 });

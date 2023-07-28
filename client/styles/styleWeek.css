@@ -395,7 +395,10 @@ body {
     justify-content: space-around;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
+    .search input::placeholder {
+        font-size: 22px;
+    }
     .left {
         margin-right: 0px;
     }
@@ -408,18 +411,12 @@ body {
         background: url(images/iconsMeter/locV1.png);
     }
     .BigRectangle {
-        width: 600px;
+        width: 700px;
         height: 425px;
         margin-bottom: 2em;
     }
     .city {
         width: 550px;
-    }
-    .IconTemp {
-        width: 450px;
-        height: 200px;
-        display: flex;
-        flex-direction: row;
     }
     .BigRectangleDown {
         font-size: 20px; 

@@ -1119,3 +1119,27 @@ function geocode() {
             forecast();
         })
 }
+
+function initSlider() {
+    if (window.innerWidth > 1000) {
+        $("#slider").owlCarousel({
+            dots: false,
+            items: 3,
+            margin: 155
+        });
+    } else {
+        $("#slider").owlCarousel({
+            dots: false,
+            items: 2,
+            margin: 50
+        });
+    }
+}
+
+$(document).ready(function() {
+    initSlider(); 
+    $(window).on('resize', function() {
+        $("#slider").trigger('destroy.owl.carousel');
+        initSlider();
+    });
+});
