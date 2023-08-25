@@ -272,8 +272,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-right: 80px;
-    margin-left: 80px;
+    margin-left: 150px;
 }
 .slider {
     display: flex;
@@ -344,6 +343,12 @@ body {
 }
 
 @media (max-width: 1000px) {
+    .rectangles {
+        margin-left: 145px;
+    }
+    .BigRectangleNotFound {
+        width: 700px;
+    }
     .search input::placeholder {
         font-size: 22px;
     }

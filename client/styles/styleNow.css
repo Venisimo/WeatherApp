@@ -270,6 +270,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-right: 80px;
+    margin-left: 80px;
 }
 .rectangle{
     width: 321px;
@@ -360,8 +362,16 @@ body {
     flex-direction: row;
     justify-content: space-around;
 }
-
+.IconsWeather {
+    height: 40px;
+}
 @media (max-width: 1000px) {
+    .rectangles {
+        margin-left: 145px;
+    }
+    .BigRectangleNotFound {
+        width: 700px;
+    }
     .search input::placeholder {
         font-size: 22px;
     }
@@ -386,5 +396,37 @@ body {
     }
     .BigRectangleDown {
         font-size: 20px; 
+    }
+    .rectangle{
+        width: 280px;
+        height: 265px;  
+    }
+    .rectangleBg {
+        width: 280px;
+        height: 170px;
+    }
+    .rectangle2{
+        width: 280px;
+        height: 265px;
+    }
+    .rectangleBg2 {
+        width: 280px;
+        height: 170px;
+    }
+    .rectangle3{
+        width: 280px;
+        height: 265px;
+    }
+    .rectangleBg3 {
+        width: 280px;
+        height: 170px;
+    }
+    .rectangle4{
+        width: 280px;
+        height: 265px;
+    }
+    .rectangleBg4 {
+        width: 280px;
+        height: 170px;
     }
 }

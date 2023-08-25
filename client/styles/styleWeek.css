@@ -396,6 +396,12 @@ body {
 }
 
 @media (max-width: 1000px) {
+    .rectangles {
+        margin-left: 145px;
+    }
+    .BigRectangleNotFound {
+        width: 700px;
+    }
     .search input::placeholder {
         font-size: 22px;
     }

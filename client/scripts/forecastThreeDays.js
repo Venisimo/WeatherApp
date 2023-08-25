@@ -1131,7 +1131,7 @@ function initSlider() {
         $("#slider").owlCarousel({
             dots: false,
             items: 2,
-            margin: 50
+            margin: 20
         });
     }
 }
