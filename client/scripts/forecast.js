@@ -55,9 +55,34 @@ let lon;
 let degress = 'celsius';
 let degressSign = '°C';
 
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCity = urlParams.get('city');
+    const initialDegress = urlParams.get('degress');
+    if (initialDegress !== null){
+        if (initialDegress == 'fahrenheit') {
+            $('.checkboxInput').toggleClass('active');
+            degress = 'celsius';
+            degressSign = '°C';
+            $('.C').css('color', '#fff');
+            degress = 'fahrenheit';
+            degressSign = '°F';
+            $('.C').css('color', '#000');
+        } else if (initialDegress == 'celsius') {
+            $('.checkboxInput').remove('active');
+            degress = 'celsius';
+            degressSign = '°C';
+            $('.C').css('color', '#fff');
+        }   
+    }
+    if (initialCity !== null) {
+        input.value = decodeURIComponent(initialCity);
+        geocode();
+    }
+});
+
 $(document).ready(function() {
     $(document).on('click', '.checkboxInput', function(event) {
-        $('C').toggleClass('notActive');
         $(this).toggleClass('active');
         if (degressSign == '°F'){    
             degress = 'celsius';
@@ -74,6 +99,9 @@ $(document).ready(function() {
         if (input.value != "") {
             geocode();
         }
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set('degress', degress);
+        history.pushState({}, '', newUrl)
         return false;
     });
 });
@@ -103,7 +131,7 @@ function geocode() {
     cityName.innerHTML = city;
     apiMap = `https://nominatim.openstreetmap.org/search.php?q=${city}&format=jsonv2`
 
-    if (city = '') {
+    if (city == '') {
         return
     }
 
@@ -123,13 +151,13 @@ function geocode() {
                 console.log(lat);
                 console.log(lon);
 
-                function forecast() {
-                    apiWeather = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,weathercode,surface_pressure,windspeed_10m&daily=sunrise,sunset&current_weather=true&windspeed_unit=ms&forecast_days=2&timezone=auto&temperature_unit=${degress}`
-        
-                    if (city = '') {
-                        return
-                    }
+                const newUrl = new URL(window.location.href);
+                newUrl.searchParams.set('city', city);
+                history.pushState({}, '', newUrl)
 
+                function forecast() {
+                    apiWeather = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,weathercode,surface_pressure,windspeed_10m&daily=sunrise,sunset&current_weather=true&windspeed_unit=ms&forecast_days=2&timezone=auto&temperature_unit=${degress}`;
+                    
                     fetch(apiWeather).then(response => response.json()).then(
                         json => {
                             let dat = new Date();
