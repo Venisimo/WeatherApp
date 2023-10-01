@@ -23,7 +23,7 @@ app.get('/weatherTenDays', function(req, res){
 app.use(express.static(path.join(__dirname, '/client/')))
     
 app.use(function(req, res, next) {
-    res.status(404).sendFile('/Лысов_НАДИП/4 курс/Project_Nadip/client/pages/Page404.html');
+    res.status(404).sendFile('/Лысов_НАДИП/4 курс/Project_Nadip/ClientAndServer/pages/Page404.html');
 });
 
 app.listen(3001, function(req, res) {
