@@ -1,0 +1,58 @@
+html {
+    height: 100%
+}
+@font-face {
+    font-family: NotoSans;
+    src: url("Fonts/NotoSansHK-Regular.otf");
+}
+.links p {
+    text-align: center;
+    font-size: 28px;
+    color: white;
+    margin-bottom: 2.3em;
+}
+ul {
+    text-align: center;
+}
+ul li {
+    display: inline;
+    color: white;
+    font-size: 28px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+li a {
+    display: inline;
+    color: white;
+    font-size: 28px;
+    text-decoration: none;
+}
+header {
+    color: white;
+    font-size: 42px;
+    text-align: center;
+}
+img {
+    margin: auto;
+    display: block;
+}
+body {
+    background-size: cover;
+    background: linear-gradient(to bottom right, #97a2dd 0%, #0450f5 100%);
+    font-family: NotoSans;
+}
+@media (max-width: 1000px) {
+    .links p {
+        text-align: center;
+        font-size: 28px;
+        color: white;
+        margin-bottom: 1em;
+    }
+    img {
+        width: 57.5%; 
+        height: 57.5%;
+    }
+    ul li {
+        display: block;
+    }
+}

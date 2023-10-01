@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="styles/images/Sun.ico" type="image/png">
-    <link rel="stylesheet" href="styles/styleWeek.css">
+    <link rel="stylesheet" href="styles/styleThreeDays.css">
     <link rel="stylesheet" href="styles/owl.carousel.min.css">
     <link rel="stylesheet" href="styles/owl.theme.default.min.css">
-    <title>Погода на неделю</title>
+    <title>Погода на 3 дня</title>
 </head>
 <header>
     <div class="verticallyLeft">
@@ -67,7 +67,8 @@
             </div>
             <div class="BigRectangleNotFound">
                 <div>
-                    <img src="./styles/images/notFound3.png"></img>
+                    <p class="cityNotFound">Локация не найдена</p>
+                    <img src="./styles/images/NotFoundLocation.gif"></img>
                 </div>
             </div>
             <div class="rectangles">
@@ -105,55 +106,10 @@
                                 <p id="humidityThree"></p>
                             </div>     
                         </div>
-                        <div class="rectangle4">
-                            <div class="timeDown" id="timeDownFour">Apr 19</div>
-                            <div class="rectangleBg4" id="IconWeatherFour"></div>
-                            <div class="TemperatureDay" id="TempFour">Днем 3°C</div>
-                            <div class="TemperatureNight" id="TempFourNight">Ночью -3°C</div>
-                            <div class="WeatherText">
-                                <p id="windFour"></p>
-                                <p id="airPressureFour"></p>
-                                <p id="humidityFour"></p>
-                            </div>     
-                        </div>
-                        <div class="rectangle5">
-                            <div class="timeDown" id="timeDownFive">Apr 20</div>
-                            <div class="rectangleBg5" id="IconWeatherFive"></div>
-                            <div class="TemperatureDay" id="TempFive">Днем 3°C</div>
-                            <div class="TemperatureNight" id="TempFiveNight">Ночью -3°C</div>
-                            <div class="WeatherText">
-                                <p id="windFive"></p>
-                                <p id="airPressureFive"></p>
-                                <p id="humidityFive"></p>
-                            </div>
-                        </div>
-                        <div class="rectangle6">
-                            <div class="timeDown" id="timeDownSix">Apr 20</div>
-                            <div class="rectangleBg6" id="IconWeatherSix"></div>
-                            <div class="TemperatureDay" id="TempSix">Днем 3°C</div>
-                            <div class="TemperatureNight" id="TempSixNight">Ночью -3°C</div>
-                            <div class="WeatherText">
-                                <p id="windSix"></p>
-                                <p id="airPressureSix"></p>
-                                <p id="humiditySix"></p>
-                            </div>
-                        </div>
-                        <div class="rectangle7">
-                            <div class="timeDown" id="timeDownSeven">Apr 20</div>
-                            <div class="rectangleBg7" id="IconWeatherSeven"></div>
-                            <div class="TemperatureDay" id="TempSeven">Днем 3°C</div>
-                            <div class="TemperatureNight" id="TempSevenNight">Ночью -3°C</div>
-                            <div class="WeatherText">
-                                <p id="windSeven"></p>
-                                <p id="airPressureSeven"></p>
-                                <p id="humiditySeven"></p>
-                            </div>
-                        </div>           
                     </div>
                 </div>
-        </div>
     <script src="scripts/jquery-3.7.0.min.js"></script>
     <script src="scripts/owl.carousel.min.js"></script>
-    <script src="scripts/forecastWeek.js"></script>
+    <script src="scripts/forecastThreeDays.js"></script>
 </body>
 </html>
