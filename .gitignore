@@ -1,11 +1,3 @@
-макеты/
-test.html
-weatherNowThreeDays.html
-index.html
-weather.html
-illustrator/
-gismeteo/
-КодыПамятка/
-node_modules/
-*.docx
-week.html
+default
+ClientAndServer/pages/sdr.html
+ClientAndServer/styles/styleSdr.css

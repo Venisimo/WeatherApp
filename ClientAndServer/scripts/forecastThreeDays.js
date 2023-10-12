@@ -135,7 +135,6 @@ function geocode() {
 
     fetch(apiMap).then(response => response.json()).then(
         json => {
-                console.log(json);
                 if(json.length == 0) {
                     container.classList.add('notFound');
                     BigRectangle.style.display = 'none';
@@ -145,9 +144,6 @@ function geocode() {
 
                 lat = parseFloat(json[0].lat);
                 lon = parseFloat(json[0].lon);
-
-                console.log(lat);
-                console.log(lon);
 
                 const newUrl = new URL(window.location.href);
                 newUrl.searchParams.set('city', city);
@@ -168,7 +164,7 @@ function geocode() {
                             BigRectangle.style.display = '';
                             container.classList.add('active');
                             container.classList.remove('notFound');
-                            console.log(json);
+                            
 
 
                             if (monthNow == 0) {
@@ -306,12 +302,12 @@ function geocode() {
                             }
                             if (month == 'Aug') {
                                 if (dayNow > 31) {
-                                    month = 'Sen';
+                                    month = 'Sep';
                                     dayNow = 1;
                                     monthNow = 7;
                                 }
                             }
-                            if (month == 'Sen') {
+                            if (month == 'Sep') {
                                 if (dayNow > 30) {
                                     month = 'Oct';
                                     dayNow = 1;
@@ -343,28 +339,23 @@ function geocode() {
 
                             let DateLocale = new Date(dat.getUTCFullYear(), monthNow, dayNow, hourNow, minutesNow);
                             
-                            console.log(json.daily.sunrise);
                             let sunrise = new Date(json.daily.sunrise[0]);
                             let sunset = new Date(json.daily.sunset[0]);
-                            console.log(DateLocale);
-                            console.log(sunrise); 
-                            console.log(sunset);
                         
                             if (DateLocale > sunrise && DateLocale < sunset) {
-                                console.log('день');
+                                
                             } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow > 2 && monthNow < 8) {
-                                console.log('день');
+                                
                             } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow < 2 || monthNow > 8) {
-                                console.log('ночь');
+                                
                             } else {
-                                console.log('ночь');
+                                
                             }
 
                             TempCenter.innerHTML = `${parseInt(json.current_weather.temperature)}${degressSign}`;
                             BRWind.innerHTML = `${parseInt(json.current_weather.windspeed)} м/с`;
                             BRPressure.innerHTML = `${parseInt(json.hourly.surface_pressure[hourNow] * 0.75)} мм.`;
                             BRHumidity.innerHTML = `${json.hourly.relativehumidity_2m[hourNow]}%`;
-                            console.log(hourNow)
                             
                             date.innerHTML = month + " " + dayNow;
                             let dayTempOne = 12;
@@ -373,14 +364,12 @@ function geocode() {
                                 dayTempOne = i;
                               }
                             }
-                            console.log(dayTempOne);
                             let nightOne = 22;
                             for (let i = 22; i < 29; i++) {
                                 if(json.hourly.temperature_2m[i] < json.hourly.temperature_2m[nightOne]) {
                                     nightOne = i;
                                 }
                               }
-                            console.log(nightOne);
 
                             let dayTempTwo = 36;
                             for (let i = 36; i < 43; i++) {
@@ -388,14 +377,13 @@ function geocode() {
                                 dayTempTwo = i;
                               }
                             }
-                            console.log(dayTempTwo);
+
                             let nightTwo = 46;
                             for (let i = 46; i < 53; i++) {
                                 if(json.hourly.temperature_2m[i] < json.hourly.temperature_2m[nightTwo]) {
                                     nightTwo = i;
                                 }
                               }
-                            console.log(nightTwo);
                            
                             let dayTempThree = 60;
                             for (let i = 60; i < 67; i++) {
@@ -403,42 +391,35 @@ function geocode() {
                                 dayTempThree = i;
                               }
                             }
-                            console.log(dayTempThree);
+
                             let nightThree = 70;
                             for (let i = 70; i < 73; i++) {
                                 if(json.hourly.temperature_2m[i] < json.hourly.temperature_2m[nightThree]) {
                                     nightThree = i;
                                 }
                               }
-                            console.log(nightThree);
 
                             
                             let avgWindSpeedOne = 0;
                             let avgWindSpeedsum = 0;
                             for (let i = 0; i < 24; i++) {
-                                console.log(json.hourly.windspeed_10m[i]);
                                 avgWindSpeedsum += json.hourly.windspeed_10m[i];
                             }
                             avgWindSpeedOne = avgWindSpeedsum / 24;
-                            console.log(avgWindSpeedOne);
 
                             let avgWindSpeedTwo = 0;
                             let avgWindSpeedsumTwo = 0;
                             for (let i = 24; i < 48; i++) {
-                                console.log(json.hourly.windspeed_10m[i]);
                                 avgWindSpeedsumTwo += json.hourly.windspeed_10m[i];
                             }
                             avgWindSpeedTwo = avgWindSpeedsumTwo / 24;
-                            console.log(avgWindSpeedTwo);
 
                             let avgWindSpeedThree = 0;
                             let avgWindSpeedsumThree = 0;
                             for (let i = 48; i < 72; i++) {
-                                console.log(json.hourly.windspeed_10m[i]);
                                 avgWindSpeedsumThree += json.hourly.windspeed_10m[i];
                             }
                             avgWindSpeedThree = avgWindSpeedsumThree / 24;
-                            console.log(avgWindSpeedThree);
 
                             
                             let avgAirPressureOne = 0;
@@ -447,7 +428,6 @@ function geocode() {
                                 sumAirPressureOne += json.hourly.surface_pressure[i];
                             }
                             avgAirPressureOne = sumAirPressureOne / 24;
-                            console.log(avgAirPressureOne);
 
                             let avgAirPressureTwo = 0;
                             let sumAirPressureTwo = 0;
@@ -455,7 +435,6 @@ function geocode() {
                                 sumAirPressureTwo += json.hourly.surface_pressure[i];
                             }
                             avgAirPressureTwo = sumAirPressureTwo / 24;
-                            console.log(avgAirPressureTwo);
 
 
                             let avgAirPressureThree = 0;
@@ -464,9 +443,7 @@ function geocode() {
                                 sumAirPressureThree += json.hourly.surface_pressure[i];
                             }
                             avgAirPressureThree = sumAirPressureThree / 24;
-                            console.log(avgAirPressureThree);
 
-                            
 
                             let avgHumidityOne = 0
                             let sumHumidityOne = 0
@@ -474,7 +451,6 @@ function geocode() {
                                 sumHumidityOne += json.hourly.relativehumidity_2m[i];
                             }
                             avgHumidityOne = sumHumidityOne / 24;
-                            console.log(avgHumidityOne);
 
                             let avgHumidityTwo = 0;
                             let sumHumidityTwo = 0;
@@ -482,7 +458,6 @@ function geocode() {
                                 sumHumidityTwo += json.hourly.relativehumidity_2m[i];
                             }
                             avgHumidityTwo = sumHumidityTwo / 24;
-                            console.log(avgHumidityTwo);
 
                             let avgHumidityThree = 0;
                             let sumHumidityThree = 0;
@@ -490,14 +465,12 @@ function geocode() {
                                 sumHumidityThree += json.hourly.relativehumidity_2m[i];
                             }
                             avgHumidityThree = sumHumidityThree / 24;
-                            console.log(avgHumidityThree);
                             
                             
                             arrWeatherCodeOne = [];
                             for (let i = 0; i < 24; i++) {
                                 arrWeatherCodeOne.push(json.hourly.weathercode[i]);
                             }
-                            console.log(arrWeatherCodeOne);
                             let countWeatherCodeOne = Object.create(null), maxWeatherCodeOne = 0, curWeatherCodeOne, resWeatherCodeOne;
                             for (let x of arrWeatherCodeOne) {
                               if ((curWeatherCodeOne = countWeatherCodeOne[x] = ~~countWeatherCodeOne[x] + 1) > maxWeatherCodeOne) {
@@ -505,13 +478,11 @@ function geocode() {
                                 resWeatherCodeOne = x;
                               }
                             }
-                            console.log(resWeatherCodeOne);
 
                             arrWeatherCodeTwo = [];
                             for (let i = 24; i < 48; i++) {
                                 arrWeatherCodeTwo.push(json.hourly.weathercode[i]);
                             }
-                            console.log(arrWeatherCodeTwo);
                             let countWeatherCodeTwo = Object.create(null), maxWeatherCodeTwo = 0, curWeatherCodeTwo, resWeatherCodeTwo;
                             for (let x of arrWeatherCodeTwo) {
                               if ((curWeatherCodeTwo = countWeatherCodeTwo[x] = ~~countWeatherCodeTwo[x] + 1) > maxWeatherCodeTwo) {
@@ -519,14 +490,12 @@ function geocode() {
                                 resWeatherCodeTwo = x;
                               }
                             }
-                            console.log(resWeatherCodeTwo);
 
 
                             let arrWeatherCodeThree = [];
                             for (let i = 48; i < 72; i++) {
                                 arrWeatherCodeThree.push(json.hourly.weathercode[i]);
                             }
-                            console.log(arrWeatherCodeThree);
 
                             let countWeatherCodeThree = Object.create(null);
                             let maxWeatherCodeThree = 0;
@@ -539,8 +508,6 @@ function geocode() {
                                     resWeatherCodeThree = x;
                                 }
                             }
-
-                            console.log(resWeatherCodeThree);
                             
 
                             TempOne.innerHTML = `Днем ${parseInt(json.hourly.temperature_2m[dayTempOne])}${degressSign}`;
@@ -563,29 +530,26 @@ function geocode() {
                             humidityOne.innerHTML = `${parseInt(avgHumidityOne)} %`;
                             humidityTwo.innerHTML = `${parseInt(avgHumidityTwo)} %`;
                             humidityThree.innerHTML = `${parseInt(avgHumidityThree)} %`;
-
-                            console.log(json.hourly.temperature_2m);
-                            console.log(json.hourly.weathercode[hourNow]);
                             
                             if (json.hourly.weathercode[hourNow] == 0) {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/SunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else {
                                     wIcon.style.background = "url(styles/images/BIGicon/MoonBIG.png) center no-repeat";
-                                    console.log('ночь');
+                                    
                                 }
                             } else if (json.hourly.weathercode[hourNow] == 1 || json.hourly.weathercode[hourNow] == 2) {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/cloudSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow > 2 && monthNow < 8) {
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow < 2 || monthNow > 8) {
-                                    console.log('ночь');
+                                    
                                 } else {
                                     wIcon.style.background = "url(styles/images/BIGicon/cloudMoonBIG.png) center no-repeat";
-                                    console.log('ночь');
+                                    
                                 }
                             } else if (json.hourly.weathercode[hourNow] == 3) {
                                 wIcon.style.background = "url(styles/images/BIGicon/cloudBIG.png) center no-repeat";
@@ -606,44 +570,44 @@ function geocode() {
                             } else if (json.hourly.weathercode[hourNow] == 61) {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMinSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow > 2 && monthNow < 8) {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMinSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow < 2 || monthNow > 8) {
-                                    console.log('ночь');
+                                    
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMinMoonBIG.png) center no-repeat";
                                 } else {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMinMoonBIG.png) center no-repeat";
-                                    console.log('ночь');
+                                    
                                 }
                             } else if (json.hourly.weathercode[hourNow] == 63) {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMidSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow > 2 && monthNow < 8) {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMidSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow < 2 || monthNow > 8) {
-                                    console.log('ночь');
+                                    
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMidMoonBIG.png) center no-repeat";
                                 } else {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMidMoonBIG.png) center no-repeat";
-                                    console.log('ночь');
+                                    
                                 }
                             } else if (json.hourly.weathercode[hourNow] == 65) {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMaxSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow > 2 && monthNow < 8) {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMaxSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow < 2 || monthNow > 8) {
-                                    console.log('ночь');
+                                    
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMaxMoonBIG.png) center no-repeat";
                                 } else {
                                     wIcon.style.background = "url(styles/images/BIGicon/rainMaxMoonBIG.png) center no-repeat";
-                                    console.log('ночь');
+                                    
                                 }
                             } else if (json.hourly.weathercode[hourNow] == 66) {
                                 wIcon.style.background = "url(styles/images/BIGicon/rainSnowMinBIG.png) center no-repeat";
@@ -652,44 +616,44 @@ function geocode() {
                             } else if (json.hourly.weathercode[hourNow] == 71) {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMinSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow > 2 && monthNow < 8) {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMinSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow < 2 || monthNow > 8) {
-                                    console.log('ночь');
+                                    
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMinMoonBIG.png) center no-repeat";
                                 } else {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMinMoonBIG.png) center no-repeat";
-                                    console.log('ночь');
+                                    
                                 }
                             } else if (json.hourly.weathercode[hourNow] == 73) {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMidSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow > 2 && monthNow < 8) {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMidSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow < 2 || monthNow > 8) {
-                                    console.log('ночь');
+                                    
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMidMoonBIG.png) center no-repeat";
                                 } else {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMidMoonBIG.png) center no-repeat";
-                                    console.log('ночь');
+                                    
                                 }
                             } else if (json.hourly.weathercode[hourNow] == 75) {
                                 if (DateLocale > sunrise && DateLocale < sunset) {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMaxSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow > 2 && monthNow < 8) {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMaxSunBIG.png) center no-repeat";
-                                    console.log('день');
+                                    
                                 } else if (sunrise == 'Invalid Date' && sunset == 'Invalid Date' && monthNow < 2 || monthNow > 8) {
-                                    console.log('ночь');
+                                    
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMaxMoonBIG.png) center no-repeat";
                                 } else {
                                     wIcon.style.background = "url(styles/images/BIGicon/snowMaxMoonBIG.png) center no-repeat";
-                                    console.log('ночь');
+                                    
                                 }
                             } else if (json.hourly.weathercode[hourNow] == 77) {
                                 wIcon.style.background = "url(styles/images/BIGicon/SnowGrainsBIG.png) center no-repeat";
@@ -933,11 +897,11 @@ function geocode() {
                             }
                             if (month == 'Aug') {
                                 if (dayOne > 31) {
-                                    month = 'Sen';
+                                    month = 'Sep';
                                     dayOne = 1;
                                 }
                             }
-                            if (month == 'Sen') {
+                            if (month == 'Sep') {
                                 if (dayOne > 30) {
                                     month = 'Oct';
                                     dayOne = 1;
@@ -1012,11 +976,11 @@ function geocode() {
                             }
                             if (month == 'Aug') {
                                 if (dayTwo > 31) {
-                                    month = 'Sen';
+                                    month = 'Sep';
                                     dayTwo = 1;
                                 }
                             }
-                            if (month == 'Sen') {
+                            if (month == 'Sep') {
                                 if (dayTwo > 30) {
                                     month = 'Oct';
                                     dayTwo = 1;
@@ -1091,11 +1055,11 @@ function geocode() {
                             }
                             if (month == 'Aug') {
                                 if (dayThree > 31) {
-                                    month = 'Sen';
+                                    month = 'Sep';
                                     dayThree = 1;
                                 }
                             }
-                            if (month == 'Sen') {
+                            if (month == 'Sep') {
                                 if (dayThree > 30) {
                                     month = 'Oct';
                                     dayThree = 1;
@@ -1130,8 +1094,6 @@ function geocode() {
                             }
 
                             hour.innerHTML = hourNow + ":" + minutesNow;
-                            console.log(json.timezone)
-                            console.log(json)
                         }
                     )
             }
